@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+//global variable storage
 public static class GlobalVariables
 {
     public static Dictionary<string, Object> globalObjects = new Dictionary<string, Object>();//player can be stored here
