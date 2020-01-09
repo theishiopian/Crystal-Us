@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputListner : MonoBehaviour, ICharacterController, ICharacterComponent
+public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     private CharacterMover controller;
     // Start is called before the first frame update
