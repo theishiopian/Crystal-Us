@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterController2D : MonoBehaviour
+public class CharacterMover : MonoBehaviour, ICharacterComponent
 {
     public float movementSpeed;
 
     private Rigidbody2D body;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class CharacterController2D : MonoBehaviour
             body.gravityScale = 0;
             body.constraints = RigidbodyConstraints2D.FreezeRotation;
             body.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
-            //add any rigidbody tweaks here
+            //add any further rigidbody tweaks here
         }
         else
         {
@@ -27,6 +28,6 @@ public class CharacterController2D : MonoBehaviour
     public bool Move(Vector2 movement)
     {
         body.position = body.position + (movement * movementSpeed * Time.deltaTime);
-        return true;
+        return true;//TODO return false if movement failed, eg if there was something in the way or the player got knocked back
     }
 }

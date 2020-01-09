@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputListner : MonoBehaviour
+public class PlayerInputListner : MonoBehaviour, ICharacterController, ICharacterComponent
 {
-    private CharacterController2D controller;
+    private CharacterMover controller;
     // Start is called before the first frame update
     void Start()
     {
-        controller = this.gameObject.GetComponent<CharacterController2D>();
+        controller = this.gameObject.GetComponent<CharacterMover>();
     }
 
     //will move to reference class if neccesary
