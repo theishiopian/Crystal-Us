@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using System.Collections;
 using System.Collections.Generic;
 
 /**
@@ -9,11 +8,11 @@ using System.Collections.Generic;
  */
 public class EventManager : MonoBehaviour
 {
-    private Dictionary<string, UnityEvent> eventDictionary;
+    private Dictionary<string, UnityEvent> eventDictionary;//list of events
 
-    private static EventManager eventManager;
+    private static EventManager eventManager;//instance container
 
-    public static EventManager instance
+    public static EventManager instance//special getter for singleton initilization
     {
         get
         {
@@ -35,7 +34,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    void Init()
+    void Init()//init event dictionary
     {
         if (eventDictionary == null)
         {
@@ -43,7 +42,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void StartListening(string eventName, UnityAction listener)
+    public static void StartListening(string eventName, UnityAction listener)//tell the manager to start listening for an event
     {
         UnityEvent thisEvent = null;
         if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
@@ -58,7 +57,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void StopListening(string eventName, UnityAction listener)
+    public static void StopListening(string eventName, UnityAction listener)//tell the manager to stop listening for an event
     {
         if (eventManager == null) return;
         UnityEvent thisEvent = null;
@@ -68,7 +67,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public static void TriggerEvent(string eventName)
+    public static void TriggerEvent(string eventName)//trigger an event
     {
         UnityEvent thisEvent = null;
         if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
