@@ -10,8 +10,10 @@ public class CharacterAttack : MonoBehaviour, ICharacterComponent
     public bool Attack(Vector2 direction, float attackPower)
     {
         Vector2 position = this.gameObject.transform.position;
-        RaycastHit2D hit = Physics2D.CircleCast(position,1,direction);
+        RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,2);
+        Debug.DrawRay(position, direction, Color.blue,1);
 
-        return true;
+        
+        return hit;
     }
 }

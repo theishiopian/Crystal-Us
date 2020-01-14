@@ -6,11 +6,13 @@ public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacter
 {
     private CharacterMover controller;
     private CharacterAnimationController animator;
+    private CharacterAttack attack;
     // Start is called before the first frame update
     void Start()
     {
         controller = this.gameObject.GetComponent<CharacterMover>();
         animator = this.gameObject.GetComponent<CharacterAnimationController>();
+        attack = this.gameObject.GetComponent<CharacterAttack>();
     }
 
     //will move to reference class if neccesary
@@ -20,25 +22,31 @@ public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacter
     // Update is called once per frame
     void Update()
     {
+        Move();
+        Attack();
+    }
+
+    void Move()
+    {
         float x = Input.GetAxis(Horizontal);
         float y = Input.GetAxis(Vertical);
 
         int i = animator.index;
         int ti = 0;
-        
-        if(x > 0)
+        //TODO replace all this grox shit with a proper animator system
+        if (x > 0)
         {
             ti = 3;
         }
-        else if(x < 0)
+        else if (x < 0)
         {
             ti = 1;
         }
-        else if(y > 0)
+        else if (y > 0)
         {
             ti = 2;
         }
-        else if(y < 0)
+        else if (y < 0)
         {
             ti = 0;
         }
@@ -50,6 +58,41 @@ public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacter
         {
             i = ti;
             animator.SetSprite(i);
+        }
+    }
+
+    float attackPower = 0;
+    bool attacked = true;
+
+
+    void Attack()
+    {
+        if(Input.GetMouseButton(0))//TODO replace with axis
+        {
+            attacked = false;
+            Mathf.Clamp(0, 1, attackPower += Time.deltaTime);
+        }
+        else if(!attacked)
+        {
+            //get direction and normalize
+            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
+
+            float x = direction.x;
+            float y = direction.y;
+
+            if(Mathf.Abs(x)>Mathf.Abs(y))
+            {
+                direction.x = Mathf.Sign(x);
+                direction.y = 0;
+            }
+            else
+            {
+                direction.y = Mathf.Sign(y);
+                direction.x = 0;
+            }
+
+            attacked = true;
+            attack.Attack(direction, attackPower);
         }
     }
 }
