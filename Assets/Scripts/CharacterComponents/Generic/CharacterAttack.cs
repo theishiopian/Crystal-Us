@@ -15,7 +15,15 @@ public class CharacterAttack : MonoBehaviour, ICharacterComponent
         Vector2 position = this.gameObject.transform.position;
         RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,2,mask);
         Debug.DrawRay(position, direction, Color.blue,1);
-        CharacterHealth health = hit.collider.gameObject.GetComponent<CharacterHealth>();
+        CharacterHealth health = null;
+        try
+        {
+            health = hit.collider.gameObject.GetComponent<CharacterHealth>();
+        }
+        catch
+        {
+            //add debug code here if needed
+        }
         if(hit && health != null)
         {
             Debug.Log("attacked: " + hit.collider.gameObject);

@@ -6,6 +6,7 @@ public class CharacterHealth : MonoBehaviour, ICharacterComponent
 {
     public int health;
     public bool isPlayer;
+    bool[] b = { };
     // Start is called before the first frame update
     void Start()
     {

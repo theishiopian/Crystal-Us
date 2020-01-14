@@ -70,7 +70,14 @@ public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacter
         if(Input.GetMouseButton(0))//TODO replace with axis
         {
             attacked = false;
-            Mathf.Clamp(0, 1, attackPower += Time.deltaTime);
+            attackPower += Time.deltaTime;
+            
+            if(attackPower > 2)//if you can get clamp to work here, go for it!
+            {
+                attackPower = 2;//TODO: implement sword projectile
+            }
+
+            Debug.Log("attack power: "+attackPower);
         }
         else if(!attacked)
         {
@@ -93,6 +100,7 @@ public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacter
 
             attacked = true;
             attack.Attack(direction, attackPower);
+            attackPower = 0;
         }
     }
 }
