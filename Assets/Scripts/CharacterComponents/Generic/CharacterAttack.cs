@@ -1,13 +1,16 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(CharacterLevelComponent))]
 public class CharacterAttack : MonoBehaviour, ICharacterComponent
 {
     public string layerToHit;
 
     private LayerMask mask;
+    private CharacterLevelComponent level;
     void Start()
     {
         mask = LayerMask.GetMask(layerToHit);
+        level = GetComponent<CharacterLevelComponent>();
     }
 
     public bool Attack(Vector2 direction, float attackPower)
@@ -26,8 +29,7 @@ public class CharacterAttack : MonoBehaviour, ICharacterComponent
         }
         if(hit && health != null)
         {
-            Debug.Log("attacked: " + hit.collider.gameObject);
-            health.Damage(2 * Mathf.CeilToInt(attackPower));
+            health.Damage(1+level.level * Mathf.CeilToInt(attackPower));
             return true;
         }
 

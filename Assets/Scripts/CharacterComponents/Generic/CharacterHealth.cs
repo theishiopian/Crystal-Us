@@ -5,17 +5,13 @@ using UnityEngine;
 public class CharacterHealth : MonoBehaviour, ICharacterComponent
 {
     public int health;
+    public int armor;
     public bool isPlayer;
     bool[] b = { };
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void Damage(int amount)
     {
-        health -= amount;
+        health -= (int)Mathf.Clamp(amount-armor, 1,Mathf.Infinity);
         if(health <= 0)
         {
             if(isPlayer)
@@ -24,6 +20,7 @@ public class CharacterHealth : MonoBehaviour, ICharacterComponent
             }
             else
             {
+                EventManager.TriggerEvent("enemy_death");
                 Die();
             }
         }
