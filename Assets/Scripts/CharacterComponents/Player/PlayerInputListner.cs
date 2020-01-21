@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacterController
 {
-    private CharacterMoverComponent controller;
+    private CharacterMover controller;
     private CharacterAnimationController animator;
     private CharacterAttack attack;
     // Start is called before the first frame update
     void Start()
     {
-        controller = this.gameObject.GetComponent<CharacterMoverComponent>();
+        controller = this.gameObject.GetComponent<CharacterMover>();
         animator = this.gameObject.GetComponent<CharacterAnimationController>();
         attack = this.gameObject.GetComponent<CharacterAttack>();
     }

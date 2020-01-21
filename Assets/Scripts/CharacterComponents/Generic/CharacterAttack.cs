@@ -18,10 +18,10 @@ public class CharacterAttack : MonoBehaviour, ICharacterComponent
         Vector2 position = this.gameObject.transform.position;
         RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,2,mask);
         Debug.DrawRay(position, direction, Color.blue,1);
-        CharacterHealthComponent health = null;
+        CharacterHealth health = null;
         try
         {
-            health = hit.collider.gameObject.GetComponent<CharacterHealthComponent>();
+            health = hit.collider.gameObject.GetComponent<CharacterHealth>();
         }
         catch
         {

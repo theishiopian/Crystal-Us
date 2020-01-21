@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
+public class CharacterHealth : MonoBehaviour, ICharacterComponent
 {
     public int health;
     public int armor;
