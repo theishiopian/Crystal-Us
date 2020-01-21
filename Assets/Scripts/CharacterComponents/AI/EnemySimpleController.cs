@@ -132,7 +132,6 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
         //float cos = Mathf.Cos(angle);
         //var d = new Vector2(cos,sin);
 
-
         Debug.DrawRay(this.transform.position, direction, Color.blue);
         //Debug.DrawRay(this.transform.position, d, Color.green);
         //Debug.Log(angle);
