@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
 {
+    public int maxHealth;
     public int health;
     public int armor;
-    public bool isPlayer;
-    bool[] b = { };
+
+    private bool isPlayer;
+
+    void Start()
+    {
+        health = maxHealth;
+        isPlayer = (this.gameObject.tag.Equals("Player"));
+    }
 
     public void Damage(int amount)
     {

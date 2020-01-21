@@ -14,29 +14,30 @@ public class CharacterLevelComponent : MonoBehaviour, ICharacterComponent
     {
         EventManager.StartListening("enemy_death", EnemyDeath);
     }
-
     void EnemyDeath()
     {
         if(isPlayer)
         {
-            XP += 1;
+            Object cache;
+            GlobalVariables.globalObjects.TryGetValue("last_enemy", out cache);
+            if (cache is GameObject && cache != null)
+            {
+                GameObject c = (GameObject)cache;
+
+                if (c.GetComponent<CharacterHealthComponent>())
+                {
+                    XP += c.GetComponent<CharacterHealthComponent>().maxHealth / 2;
+                }
+            }
+            
 
             if (XP >= levelUp)
             {
-                Object cache;
-                GlobalVariables.globalObjects.TryGetValue("last_enemy", out cache);
                 
-                if(cache is GameObject && cache != null)
-                {
-                    GameObject c = (GameObject)cache;
-                    
-                    if(c.GetComponent<CharacterHealthComponent>())
-                    {
-                        level += c.GetComponent<CharacterHealthComponent>().health/2;
-                        XP = 0;
-                        levelUp *= 2;
-                    }
-                }
+                level += 1;
+                XP = 0;
+                levelUp *= 2;
+                
             }
         }
         else
