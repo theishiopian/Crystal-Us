@@ -2733,6 +2733,8 @@ GameObject:
   - component: {fileID: 1777618842}
   - component: {fileID: 1777618841}
   - component: {fileID: 1777618844}
+  - component: {fileID: 1777618845}
+  - component: {fileID: 1777618846}
   m_Layer: 10
   m_Name: EnemyTest
   m_TagString: Untagged
@@ -2843,6 +2845,35 @@ MonoBehaviour:
   maxHealth: 10
   health: 0
   armor: 0
+--- !u!114 &1777618845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777618840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 2
+--- !u!114 &1777618846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777618840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfa27eaecac9b7448b37230816ed55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolDistance: 4
+  player: {fileID: 1777568847}
+  detectionRange: 7
+  followDistance: 8
 --- !u!1 &1835166542
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacterController
+public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     private CharacterMoverComponent controller;
     private CharacterAnimationController animator;
@@ -10,6 +10,7 @@ public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacter
     // Start is called before the first frame update
     void Start()
     {
+        GlobalVariables.globalObjects.Add("player", this.gameObject);
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
         animator = this.gameObject.GetComponent<CharacterAnimationController>();
         attack = this.gameObject.GetComponent<CharacterAttackComponent>();
@@ -77,7 +78,7 @@ public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacter
                 attackPower = 2;//TODO: implement sword projectile
             }
 
-            Debug.Log("attack power: "+attackPower);
+            //Debug.Log("attack power: "+attackPower);
         }
         else if(!attacked)
         {
