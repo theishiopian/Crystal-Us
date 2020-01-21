@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMover : MonoBehaviour, ICharacterComponent
+public class CharacterMoverComponent : MonoBehaviour, ICharacterComponent
 {
     public float movementSpeed;
 

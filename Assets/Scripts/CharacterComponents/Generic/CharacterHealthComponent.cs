@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterHealth : MonoBehaviour, ICharacterComponent
+public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
 {
     public int health;
     public int armor;
@@ -20,6 +20,7 @@ public class CharacterHealth : MonoBehaviour, ICharacterComponent
             }
             else
             {
+                GlobalVariables.globalObjects.Add("last_enemy", this.gameObject);
                 EventManager.TriggerEvent("enemy_death");
                 Die();
             }
@@ -29,6 +30,6 @@ public class CharacterHealth : MonoBehaviour, ICharacterComponent
     void Die()
     {
         Debug.Log("dead");
-        Destroy(this.gameObject);//todo: death effects? object pool?
+        Destroy(this.gameObject, 0.1f);//todo: death effects? object pool?
     }
 }

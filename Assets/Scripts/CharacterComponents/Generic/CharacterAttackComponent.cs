@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterLevelComponent))]
-public class CharacterAttack : MonoBehaviour, ICharacterComponent
+public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
 {
     public string layerToHit;
 
@@ -18,10 +18,10 @@ public class CharacterAttack : MonoBehaviour, ICharacterComponent
         Vector2 position = this.gameObject.transform.position;
         RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,2,mask);
         Debug.DrawRay(position, direction, Color.blue,1);
-        CharacterHealth health = null;
+        CharacterHealthComponent health = null;
         try
         {
-            health = hit.collider.gameObject.GetComponent<CharacterHealth>();
+            health = hit.collider.gameObject.GetComponent<CharacterHealthComponent>();
         }
         catch
         {

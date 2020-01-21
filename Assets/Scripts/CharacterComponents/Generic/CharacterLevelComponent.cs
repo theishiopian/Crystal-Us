@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class CharacterLevelComponent : MonoBehaviour
+public class CharacterLevelComponent : MonoBehaviour, ICharacterComponent
 {
     public bool isPlayer;
     public int level = 1;
@@ -22,9 +23,20 @@ public class CharacterLevelComponent : MonoBehaviour
 
             if (XP >= levelUp)
             {
-                level += 1;
-                XP = 0;
-                levelUp *= 2;
+                Object cache;
+                GlobalVariables.globalObjects.TryGetValue("last_enemy", out cache);
+                
+                if(cache is GameObject && cache != null)
+                {
+                    GameObject c = (GameObject)cache;
+                    
+                    if(c.GetComponent<CharacterHealthComponent>())
+                    {
+                        level += c.GetComponent<CharacterHealthComponent>().health/2;
+                        XP = 0;
+                        levelUp *= 2;
+                    }
+                }
             }
         }
         else

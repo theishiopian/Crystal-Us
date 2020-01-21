@@ -33,7 +33,6 @@ public class EventManager : MonoBehaviour
             return eventManager;
         }
     }
-
     void Init()//init event dictionary
     {
         if (eventDictionary == null)
@@ -42,9 +41,10 @@ public class EventManager : MonoBehaviour
         }
     }
 
+
     public static void StartListening(string eventName, UnityAction listener)//tell the manager to start listening for an event
     {
-        UnityEvent thisEvent = null;
+        UnityEvent thisEvent = default;
         if (instance.eventDictionary.TryGetValue(eventName, out thisEvent))
         {
             thisEvent.AddListener(listener);

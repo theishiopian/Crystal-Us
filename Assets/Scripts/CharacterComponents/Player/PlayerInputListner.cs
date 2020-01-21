@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerInputListner : MonoBehaviour, ICharacterComponent, ICharacterController
 {
-    private CharacterMover controller;
+    private CharacterMoverComponent controller;
     private CharacterAnimationController animator;
-    private CharacterAttack attack;
+    private CharacterAttackComponent attack;
     // Start is called before the first frame update
     void Start()
     {
-        controller = this.gameObject.GetComponent<CharacterMover>();
+        controller = this.gameObject.GetComponent<CharacterMoverComponent>();
         animator = this.gameObject.GetComponent<CharacterAnimationController>();
-        attack = this.gameObject.GetComponent<CharacterAttack>();
+        attack = this.gameObject.GetComponent<CharacterAttackComponent>();
     }
 
     //will move to reference class if neccesary
