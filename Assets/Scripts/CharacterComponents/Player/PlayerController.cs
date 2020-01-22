@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     public GameObject chargeLevel1;
     public GameObject chargeLevel2;
 
+    public List<GameObject> forceArrows;
+    public List<GameObject> forceLevels;
+
     private CharacterMoverComponent controller;
     private CharacterAnimationController animator;
     private CharacterAttackComponent attack;
@@ -68,20 +71,60 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     }
 
     float attackPower = 0;
+    int attackLevel = 0;
+
     bool attacked = true;
 
+    int oldPower = 0;
+    int arrowLevel = 0;
+    bool hasCharged = false;
 
+    private void ClearArrows()
+    {
+        foreach (GameObject arrow in forceArrows)
+        {
+            arrow.SetActive(false);
+        }
+    }
+
+    private void ClearLevels()
+    {
+        foreach (GameObject level in forceLevels)
+        {
+            level.SetActive(false);
+        }
+    }
     void Attack()
     {
+        Debug.Log(arrowLevel);
         if(Input.GetMouseButton(0))//TODO replace with axis
         {
+            if(attackPower < 2)
+            {
+                arrowLevel += Mathf.FloorToInt(attackPower*10/2);
+                arrowLevel *= 2;
+                if (arrowLevel > oldPower && oldPower < 30 && attackLevel < 3)
+                {
+                    forceArrows[oldPower/3].SetActive(true);
+                    oldPower++;
+                }
+                else if (oldPower >= 15 && attackLevel > 0 && attackLevel < 2 && !hasCharged)
+                {
+                    oldPower = 0;
+                    attackLevel++;
+                    arrowLevel = 0;
+                    ClearArrows();
+                    Debug.Log("called");
+                    hasCharged = true;
+                }
+            }
             if (!chargingEffect.isPlaying && attackPower ==0) chargingEffect.Play();
             attacked = false;
             attackPower += Time.deltaTime;
             
-            if(attackPower > 2.1f)//if you can get clamp to work here, go for it!
+            if(attackPower > 2f)//if you can get clamp to work here, go for it!
             {
-                attackPower = 2.1f;//TODO: implement sword projectile
+                attackPower = 2f;//TODO: implement sword projectile
             }
 
             //Debug.Log("attack power: "+attackPower);
@@ -108,6 +151,10 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             attacked = true;
             attack.Attack(direction, attackPower);
             attackPower = 0;
+            oldPower = 0;
+            arrowLevel = 0;
+            hasCharged = false;
+            ClearArrows();
             chargingEffect.Stop();
         }
 
@@ -116,6 +163,8 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
             chargeLevel2.SetActive(true);
             chargeLevel1.SetActive(false);
+            attackLevel = 2;
+            forceLevels[1].SetActive(true);
             if (!chargingEffect.isPlaying && attackPower<2) chargingEffect.Play();
         }
         else if (attackPower >= 1)
@@ -123,12 +172,16 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
             chargeLevel1.SetActive(true);
             chargeLevel2.SetActive(false);
+            attackLevel = 1;
+            forceLevels[0].SetActive(true);
             if (!chargingEffect.isPlaying) chargingEffect.Play();
         }
         else
         {
             chargeLevel1.SetActive(false);
             chargeLevel2.SetActive(false);
+            attackLevel = 0;
+            ClearLevels();
         }
     }
 }
