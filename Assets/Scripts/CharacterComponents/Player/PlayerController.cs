@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
+    //vfx for the charging animation
+    public ParticleSystem chargingEffect;
+    public GameObject chargeLevel1;
+    public GameObject chargeLevel2;
+
     private CharacterMoverComponent controller;
     private CharacterAnimationController animator;
     private CharacterAttackComponent attack;
@@ -70,12 +75,13 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     {
         if(Input.GetMouseButton(0))//TODO replace with axis
         {
+            if (!chargingEffect.isPlaying && attackPower ==0) chargingEffect.Play();
             attacked = false;
             attackPower += Time.deltaTime;
             
-            if(attackPower > 2)//if you can get clamp to work here, go for it!
+            if(attackPower > 2.1f)//if you can get clamp to work here, go for it!
             {
-                attackPower = 2;//TODO: implement sword projectile
+                attackPower = 2.1f;//TODO: implement sword projectile
             }
 
             //Debug.Log("attack power: "+attackPower);
@@ -102,6 +108,27 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             attacked = true;
             attack.Attack(direction, attackPower);
             attackPower = 0;
+            chargingEffect.Stop();
+        }
+
+        if (attackPower >= 2)
+        {
+
+            chargeLevel2.SetActive(true);
+            chargeLevel1.SetActive(false);
+            if (!chargingEffect.isPlaying && attackPower<2) chargingEffect.Play();
+        }
+        else if (attackPower >= 1)
+        {
+
+            chargeLevel1.SetActive(true);
+            chargeLevel2.SetActive(false);
+            if (!chargingEffect.isPlaying) chargingEffect.Play();
+        }
+        else
+        {
+            chargeLevel1.SetActive(false);
+            chargeLevel2.SetActive(false);
         }
     }
 }
