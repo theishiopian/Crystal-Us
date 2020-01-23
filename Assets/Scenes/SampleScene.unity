@@ -26405,8 +26405,21 @@ MonoBehaviour:
   chargingEffect: {fileID: 792370839}
   chargeLevel1: {fileID: 953510092}
   chargeLevel2: {fileID: 1626302467}
-  forceArrows: []
-  forceLevels: []
+  forceArrows:
+  - {fileID: 505855740}
+  - {fileID: 1321242599}
+  - {fileID: 1710004422}
+  - {fileID: 1420031625}
+  - {fileID: 800330781}
+  - {fileID: 1727737031}
+  - {fileID: 2089761181}
+  - {fileID: 1526502219}
+  - {fileID: 1192006216}
+  - {fileID: 298196491}
+  forceLevels:
+  - {fileID: 2140557018}
+  - {fileID: 324246991}
+  - {fileID: 1144133527}
 --- !u!61 &1777568852
 BoxCollider2D:
   m_ObjectHideFlags: 0
