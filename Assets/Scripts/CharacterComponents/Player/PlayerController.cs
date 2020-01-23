@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
-    //vfx for the charging animation
-    public ParticleSystem chargingEffect;
-    public GameObject chargeLevel1;
-    public GameObject chargeLevel2;
-
-    public List<GameObject> forceArrows;
-    public List<GameObject> forceLevels;
-
     private CharacterMoverComponent controller;
     private CharacterAnimationController animator;
     private CharacterAttackComponent attack;
+    private PlayerHUDComponent hud;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +15,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
         animator = this.gameObject.GetComponent<CharacterAnimationController>();
         attack = this.gameObject.GetComponent<CharacterAttackComponent>();
+        hud = this.gameObject.GetComponent<PlayerHUDComponent>();
     }
 
     //will move to reference class if neccesary
@@ -71,54 +65,17 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     }
 
     float attackPower = 0;
-    int attackLevel = 0;
-
     bool attacked = true;
+    
 
-    int oldPower = 0;
-    int arrowLevel = 0;
-    bool hasCharged = false;
-
-    private void ClearArrows()
-    {
-        foreach (GameObject arrow in forceArrows)
-        {
-            arrow.SetActive(false);
-        }
-    }
-
-    private void ClearLevels()
-    {
-        foreach (GameObject level in forceLevels)
-        {
-            level.SetActive(false);
-        }
-    }
+    
     void Attack()
     {
         //Debug.Log(arrowLevel);
         if(Input.GetMouseButton(0))//TODO replace with axis
         {
-            if(attackPower < 2)
-            {
-                arrowLevel += Mathf.FloorToInt(attackPower*10/2);
-                arrowLevel *= 2;
-                if (arrowLevel > oldPower && oldPower < 30 && attackLevel < 3)
-                {
-                    forceArrows[oldPower/3].SetActive(true);
-                    oldPower++;
-                }
-                else if (oldPower >= 15 && attackLevel > 0 && attackLevel < 2 && !hasCharged)
-                {
-                    oldPower = 0;
-                    attackLevel++;
-                    arrowLevel = 0;
-                    ClearArrows();
-                    Debug.Log("called");
-                    hasCharged = true;
-                }
-            }
-            if (!chargingEffect.isPlaying && attackPower ==0) chargingEffect.Play();
+            hud.AttackHUDInit(attackPower);
+            
             attacked = false;
             attackPower += Time.deltaTime;
             
@@ -151,37 +108,9 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             attacked = true;
             attack.Attack(direction, attackPower);
             attackPower = 0;
-            oldPower = 0;
-            arrowLevel = 0;
-            hasCharged = false;
-            ClearArrows();
-            chargingEffect.Stop();
+            hud.AttackHUDReset();
         }
 
-        if (attackPower >= 2)
-        {
-
-            chargeLevel2.SetActive(true);
-            chargeLevel1.SetActive(false);
-            attackLevel = 2;
-            forceLevels[1].SetActive(true);
-            if (!chargingEffect.isPlaying && attackPower<2) chargingEffect.Play();
-        }
-        else if (attackPower >= 1)
-        {
-
-            chargeLevel1.SetActive(true);
-            chargeLevel2.SetActive(false);
-            attackLevel = 1;
-            forceLevels[0].SetActive(true);
-            if (!chargingEffect.isPlaying) chargingEffect.Play();
-        }
-        else
-        {
-            chargeLevel1.SetActive(false);
-            chargeLevel2.SetActive(false);
-            attackLevel = 0;
-            ClearLevels();
-        }
+        hud.AttackHUDLevel(attackPower);
     }
 }
