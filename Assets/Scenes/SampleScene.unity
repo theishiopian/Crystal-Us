@@ -26304,6 +26304,7 @@ GameObject:
   - component: {fileID: 1777568855}
   - component: {fileID: 1777568856}
   - component: {fileID: 1777568857}
+  - component: {fileID: 1777568859}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -26522,9 +26523,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fd53a778fdee0f4c9b7c5750df875f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargingEffect: {fileID: 792370839}
-  chargeLevel1: {fileID: 953510092}
-  chargeLevel2: {fileID: 1626302467}
   forceArrows:
   - {fileID: 505855740}
   - {fileID: 1321242599}
@@ -26540,6 +26538,21 @@ MonoBehaviour:
   - {fileID: 2140557018}
   - {fileID: 324246991}
   - {fileID: 1144133527}
+--- !u!114 &1777568859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777568847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2e90433bd9b0a4fad9c5c6e9d3d22b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chargingEffect: {fileID: 792370839}
+  chargeLevel1: {fileID: 953510092}
+  chargeLevel2: {fileID: 1626302467}
 --- !u!1 &1777618840
 GameObject:
   m_ObjectHideFlags: 0

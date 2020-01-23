@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
 {
-    //vfx for the charging animation
-    public ParticleSystem chargingEffect;
-    public GameObject chargeLevel1;
-    public GameObject chargeLevel2;
+    
 
     public List<GameObject> forceArrows;
     public List<GameObject> forceLevels;
@@ -44,7 +41,7 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
     int arrowLevel = 0;
     bool hasCharged = false;
 
-    public void AttackHUDInit(float attackPower)
+    public void InitAttack(float attackPower)
     {
         if (attackPower < 2)
         {
@@ -61,47 +58,34 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
                 attackLevel++;
                 arrowLevel = 0;
                 ClearArrows();
-                Debug.Log("called");
+                //Debug.Log("called");
                 hasCharged = true;
             }
         }
-
-        if (!chargingEffect.isPlaying && attackPower == 0) chargingEffect.Play();
     }
 
-    public void AttackHUDReset()
+    public void ResetAttack()
     {
         oldPower = 0;
         arrowLevel = 0;
         hasCharged = false;
         ClearArrows();
-        chargingEffect.Stop();
     }
 
-    public void AttackHUDLevel(float attackPower)
+    public void SetAttackLevel(float attackPower)
     {
         if (attackPower >= 2)
         {
-
-            chargeLevel2.SetActive(true);
-            chargeLevel1.SetActive(false);
             attackLevel = 2;
             forceLevels[1].SetActive(true);
-            if (!chargingEffect.isPlaying && attackPower < 2) chargingEffect.Play();
         }
         else if (attackPower >= 1)
         {
-
-            chargeLevel1.SetActive(true);
-            chargeLevel2.SetActive(false);
             attackLevel = 1;
             forceLevels[0].SetActive(true);
-            if (!chargingEffect.isPlaying) chargingEffect.Play();
         }
         else
         {
-            chargeLevel1.SetActive(false);
-            chargeLevel2.SetActive(false);
             attackLevel = 0;
             ClearLevels();
         }

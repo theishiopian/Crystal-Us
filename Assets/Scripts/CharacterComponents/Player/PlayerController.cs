@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     private CharacterAnimationController animator;
     private CharacterAttackComponent attack;
     private PlayerHUDComponent hud;
+    private PlayerVFXComponent vfx;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         animator = this.gameObject.GetComponent<CharacterAnimationController>();
         attack = this.gameObject.GetComponent<CharacterAttackComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
+        vfx = this.gameObject.GetComponent<PlayerVFXComponent>();
     }
 
     //will move to reference class if neccesary
@@ -74,7 +76,8 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         //Debug.Log(arrowLevel);
         if(Input.GetMouseButton(0))//TODO replace with axis
         {
-            hud.AttackHUDInit(attackPower);
+            hud.InitAttack(attackPower);
+            vfx.InitAttack(attackPower);
             
             attacked = false;
             attackPower += Time.deltaTime;
@@ -108,9 +111,11 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             attacked = true;
             attack.Attack(direction, attackPower);
             attackPower = 0;
-            hud.AttackHUDReset();
+            hud.ResetAttack();
+            vfx.ResetAttack();
         }
 
-        hud.AttackHUDLevel(attackPower);
+        hud.SetAttackLevel(attackPower);
+        vfx.SetAttackLevel(attackPower);
     }
 }
