@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.Events;
 
 public class CharacterLevelComponent : MonoBehaviour, ICharacterComponent
-{
-    
+{ 
     public int level = 1;
     public int XP = 0;
+
     private int levelUp = 30;
     private bool isPlayer = false;
 
@@ -16,6 +16,7 @@ public class CharacterLevelComponent : MonoBehaviour, ICharacterComponent
         EventManager.StartListening("enemy_death", EnemyDeath);
         isPlayer = this.gameObject.CompareTag("Player");
     }
+
     void EnemyDeath()
     {
         if(isPlayer)
@@ -32,7 +33,6 @@ public class CharacterLevelComponent : MonoBehaviour, ICharacterComponent
                 }
             }
             
-
             if (XP >= levelUp)
             {
                 

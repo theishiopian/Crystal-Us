@@ -66,11 +66,9 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         }
     }
 
-    float attackPower = 0;
-    bool attacked = true;
-    
+    private float attackPower = 0;
+    private bool attacked = true;
 
-    
     void Attack()
     {
         //Debug.Log(arrowLevel);

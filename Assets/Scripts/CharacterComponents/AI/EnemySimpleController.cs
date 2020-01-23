@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
-    private CharacterMoverComponent controller;
-
-    private Vector3 patrolPoint;         // The position the simple AI will patrol around (start position)
     public float patrolDistance = 8f;   // The distance the simple AI will patrol from the patrolArea
     public GameObject player;           // The player GameObject
     public float detectionRange;   // The range at which the simple AI will begin following the player
+
+    private CharacterMoverComponent controller;
+
+    private Vector3 patrolPoint;         // The position the simple AI will patrol around (start position)
+    
     public float followDistance;  // The distance the simple AI will follow the player before going back to the patrolArea
     private float moveNext = 3f;             // While patroling, how long until the next movement
     private Vector2 moveDirection;      // Move direction

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerVFXComponent : MonoBehaviour, ICharacterComponent
 {
-
     //vfx for the charging animation
     public ParticleSystem chargingEffect;
     public GameObject chargeLevel1;
@@ -41,17 +40,5 @@ public class PlayerVFXComponent : MonoBehaviour, ICharacterComponent
             chargeLevel1.SetActive(false);
             chargeLevel2.SetActive(false);
         }
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
