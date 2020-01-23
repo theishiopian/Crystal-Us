@@ -26297,13 +26297,13 @@ GameObject:
   - component: {fileID: 1777568848}
   - component: {fileID: 1777568852}
   - component: {fileID: 1777568853}
-  - component: {fileID: 1777568858}
   - component: {fileID: 1777568851}
   - component: {fileID: 1777568850}
   - component: {fileID: 1777568854}
   - component: {fileID: 1777568855}
   - component: {fileID: 1777568856}
   - component: {fileID: 1777568857}
+  - component: {fileID: 1777568858}
   - component: {fileID: 1777568859}
   m_Layer: 9
   m_Name: Player
@@ -26538,6 +26538,9 @@ MonoBehaviour:
   - {fileID: 2140557018}
   - {fileID: 324246991}
   - {fileID: 1144133527}
+  HPBar: {fileID: 1375033118}
+  XPBar: {fileID: 1950424230}
+  levelText: {fileID: 1894978960}
 --- !u!114 &1777568859
 MonoBehaviour:
   m_ObjectHideFlags: 0

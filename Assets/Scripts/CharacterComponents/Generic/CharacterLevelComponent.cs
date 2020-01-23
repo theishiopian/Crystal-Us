@@ -47,4 +47,9 @@ public class CharacterLevelComponent : MonoBehaviour, ICharacterComponent
             //monsters dont need to level up
         }
     }
+
+    public int GetNextLevelXP()
+    {
+        return levelUp;
+    }
 }
