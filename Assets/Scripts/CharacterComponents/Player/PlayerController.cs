@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     }
     void Attack()
     {
-        Debug.Log(arrowLevel);
+        //Debug.Log(arrowLevel);
         if(Input.GetMouseButton(0))//TODO replace with axis
         {
             if(attackPower < 2)
