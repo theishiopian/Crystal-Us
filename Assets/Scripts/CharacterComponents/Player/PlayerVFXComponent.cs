@@ -23,14 +23,12 @@ public class PlayerVFXComponent : MonoBehaviour, ICharacterComponent
     {
         if (attackPower >= 2)
         {
-
             chargeLevel2.SetActive(true);
             chargeLevel1.SetActive(false);
             if (!chargingEffect.isPlaying && attackPower < 2) chargingEffect.Play();
         }
         else if (attackPower >= 1)
         {
-
             chargeLevel1.SetActive(true);
             chargeLevel2.SetActive(false);
             if (!chargingEffect.isPlaying) chargingEffect.Play();

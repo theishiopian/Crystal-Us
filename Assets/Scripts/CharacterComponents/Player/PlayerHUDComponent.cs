@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
 {
-    public List<GameObject> forceArrows;
-    public List<GameObject> forceLevels;
+    public List<GameObject> forceArrows;//10 chevron shapes on the fud for force meter
+    public List<GameObject> forceLevels;//Diamond shapes on the hud for force level indicator
 
-    public Slider HPBar;
-    public Slider XPBar;
+    public Slider HPBar; //slider bar for HP
+    public Slider XPBar; //slider bar for XP
 
-    public Text levelText;
+    public Text levelText; //text for level
 
     private CharacterHealthComponent health;
     private CharacterLevelComponent level;
@@ -26,6 +26,7 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
     // Update is called once per frame
     void Update()
     {
+        //update HP bar
         if(HPBar.maxValue != health.maxHealth)
         {
             HPBar.maxValue = health.maxHealth;
@@ -35,6 +36,7 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
             HPBar.value = health.health;
         }
 
+        //update XP bar
         if(XPBar.maxValue != level.GetNextLevelXP())
         {
             XPBar.maxValue = level.GetNextLevelXP();
@@ -44,9 +46,11 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
             XPBar.value = level.XP;
         }
 
+        //update level text
         levelText.text = "LV: " + level.level;
     }
 
+    //helper method for force HUD
     private void ClearArrows()
     {
         foreach (GameObject arrow in forceArrows)
@@ -55,6 +59,7 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
         }
     }
 
+    //helper method for force HUD
     private void ClearLevels()
     {
         foreach (GameObject level in forceLevels)
@@ -63,10 +68,12 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
         }
     }
 
+    //force arrow HUD vars
     int attackLevel = 0; int oldPower = 0;
     int arrowLevel = 0;
     bool hasCharged = false;
 
+    //start charge animation on HUD
     public void InitAttack(float attackPower)
     {
         if (attackPower < 2)
@@ -90,6 +97,7 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
         }
     }
 
+    //reset charge HUD animation
     public void ResetAttack()
     {
         oldPower = 0;
@@ -98,6 +106,7 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
         ClearArrows();
     }
 
+    //set level indicator for force HUD
     public void SetAttackLevel(float attackPower)
     {
         if (attackPower >= 2)
