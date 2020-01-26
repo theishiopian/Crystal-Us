@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     private PlayerHUDComponent hud;
     private PlayerVFXComponent vfx;
     public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         attack = this.gameObject.GetComponent<CharacterAttackComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
         vfx = this.gameObject.GetComponent<PlayerVFXComponent>();
+        anim.SetFloat("AnimSpeed", 1.0f);
     }
 
     //will move to reference class if neccesary
@@ -66,7 +68,8 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         {
             hud.InitAttack(attackPower);
             vfx.InitAttack(attackPower);
-            
+            anim.SetBool("IsAttacking", true);
+            anim.SetFloat("AnimSpeed", 0.0f);
             attacked = false;
             attackPower += Time.deltaTime;
             
@@ -81,7 +84,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         {
             //get direction and normalize
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
-
+            anim.SetFloat("AnimSpeed", 1.0f);
             float x = direction.x;
             float y = direction.y;
 
@@ -101,6 +104,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             attackPower = 0;
             hud.ResetAttack();
             vfx.ResetAttack();
+            anim.SetBool("IsAttacking", false);
         }
 
         hud.SetAttackLevel(attackPower);
