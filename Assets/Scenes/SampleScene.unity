@@ -26305,6 +26305,7 @@ GameObject:
   - component: {fileID: 1777568857}
   - component: {fileID: 1777568858}
   - component: {fileID: 1777568859}
+  - component: {fileID: 1777568860}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -26349,7 +26350,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4ff86e5fc9fb06240845198c8e389fb0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 00e839b422f228d498cf928d3d35e983, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -26404,6 +26405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ba5f700fd9f8694dbd53615dad2416f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 1777568860}
 --- !u!61 &1777568852
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26421,7 +26423,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 2}
+    oldSize: {x: 0.32, y: 0.64}
     newSize: {x: 0.32, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -26556,6 +26558,25 @@ MonoBehaviour:
   chargingEffect: {fileID: 792370839}
   chargeLevel1: {fileID: 953510092}
   chargeLevel2: {fileID: 1626302467}
+--- !u!95 &1777568860
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777568847}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a08262494fbaa44999589fdedaa17c8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1777618840
 GameObject:
   m_ObjectHideFlags: 0

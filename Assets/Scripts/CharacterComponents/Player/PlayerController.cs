@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     private CharacterAttackComponent attack;
     private PlayerHUDComponent hud;
     private PlayerVFXComponent vfx;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,43 +28,32 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     // Update is called once per frame
     void Update()
     {
+        
         Move();
         Attack();
     }
 
     void Move()
     {
-        float x = Input.GetAxis(Horizontal);
-        float y = Input.GetAxis(Vertical);
-
-        int i = animator.index;
-        int ti = 0;
-        //TODO replace all this grox shit with a proper animator system
-        if (x > 0)
-        {
-            ti = 3;
-        }
-        else if (x < 0)
-        {
-            ti = 1;
-        }
-        else if (y > 0)
-        {
-            ti = 2;
-        }
-        else if (y < 0)
-        {
-            ti = 0;
-        }
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(x, y);
-        controller.Move(movement);
 
-        if (ti != i)
+        anim.SetFloat("MovementHorizontal", movement.x);
+        anim.SetFloat("MovementVertical", movement.y);
+
+        if(movement.x != 0 || movement.y != 0)
         {
-            i = ti;
-            animator.SetSprite(i);
+            anim.SetFloat("Speed", 5.0f);
         }
+        else
+        {
+            anim.SetFloat("Speed", 0.0f);
+        }
+                
+        controller.Move(movement);
+   
     }
 
     private float attackPower = 0;
