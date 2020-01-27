@@ -5,22 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     private CharacterMoverComponent controller;
-    private CharacterAnimationController animator;
     private CharacterAttackComponent attack;
     private PlayerHUDComponent hud;
     private PlayerVFXComponent vfx;
-    public Animator anim;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         GlobalVariables.globalObjects.Add("player", this.gameObject);
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
-        animator = this.gameObject.GetComponent<CharacterAnimationController>();
         attack = this.gameObject.GetComponent<CharacterAttackComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
         vfx = this.gameObject.GetComponent<PlayerVFXComponent>();
-        anim.SetFloat("AnimSpeed", 1.0f);
+        animator = this.gameObject.GetComponent<Animator>();
+        animator.SetFloat("AnimSpeed", 1.0f);
     }
 
     //will move to reference class if neccesary
@@ -42,16 +41,16 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
         Vector2 movement = new Vector2(x, y);
 
-        anim.SetFloat("MovementHorizontal", movement.x);
-        anim.SetFloat("MovementVertical", movement.y);
+        animator.SetFloat("MovementHorizontal", movement.x);
+        animator.SetFloat("MovementVertical", movement.y);
 
         if(movement.x != 0 || movement.y != 0)
         {
-            anim.SetFloat("Speed", 5.0f);
+            animator.SetFloat("Speed", 5.0f);
         }
         else
         {
-            anim.SetFloat("Speed", 0.0f);
+            animator.SetFloat("Speed", 0.0f);
         }
                 
         controller.Move(movement);
@@ -68,8 +67,8 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         {
             hud.InitAttack(attackPower);
             vfx.InitAttack(attackPower);
-            anim.SetBool("IsAttacking", true);
-            anim.SetFloat("AnimSpeed", 0.0f); //hold attack animation
+            animator.SetBool("IsAttacking", true);
+            animator.SetFloat("AnimSpeed", 0.0f); //hold attack animation
             attacked = false;
             attackPower += Time.deltaTime;
             
@@ -84,7 +83,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         {
             //get direction and normalize
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
-            anim.SetFloat("AnimSpeed", 1.0f);  //resume attack animation
+            animator.SetFloat("AnimSpeed", 1.0f);  //resume attack animation
             float x = direction.x;
             float y = direction.y;
 
@@ -104,7 +103,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             attackPower = 0;
             hud.ResetAttack();
             vfx.ResetAttack();
-            anim.SetBool("IsAttacking", false);
+            animator.SetBool("IsAttacking", false);
         }
 
         hud.SetAttackLevel(attackPower);
