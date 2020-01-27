@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             hud.InitAttack(attackPower);
             vfx.InitAttack(attackPower);
             anim.SetBool("IsAttacking", true);
-            anim.SetFloat("AnimSpeed", 0.0f);
+            anim.SetFloat("AnimSpeed", 0.0f); //hold attack animation
             attacked = false;
             attackPower += Time.deltaTime;
             
@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         {
             //get direction and normalize
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
-            anim.SetFloat("AnimSpeed", 1.0f);
+            anim.SetFloat("AnimSpeed", 1.0f);  //resume attack animation
             float x = direction.x;
             float y = direction.y;
 
