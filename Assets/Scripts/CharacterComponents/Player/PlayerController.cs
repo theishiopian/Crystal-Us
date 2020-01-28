@@ -29,9 +29,9 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     // Update is called once per frame
     void Update()
     {
-        
         Move();
         Attack();
+        Dialouge();
     }
 
     void Move()
@@ -108,5 +108,34 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
         hud.SetAttackLevel(attackPower);
         vfx.SetAttackLevel(attackPower);
+    }
+
+    void Dialouge()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 1.5f);
+
+            CharacterDialougeComponent npc = null;
+            float distance = Mathf.Infinity;
+
+            foreach(Collider2D c in colliders)
+            {
+                float distTo = Vector2.Distance(this.transform.position, c.transform.position);
+                if (distTo < distance)
+                {
+                    CharacterDialougeComponent d = c.gameObject.GetComponent<CharacterDialougeComponent>();
+                    if(d != null)
+                    {
+                        distance = distTo;
+                        npc = d;
+                    }
+                }
+            }
+            if (npc != null)
+            {
+                npc.PrintDialouge();
+            }
+        }
     }
 }
