@@ -5,19 +5,21 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     private CharacterMoverComponent controller;
-    private CharacterAnimationController animator;
     private CharacterAttackComponent attack;
     private PlayerHUDComponent hud;
     private PlayerVFXComponent vfx;
+    private Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         GlobalVariables.globalObjects.Add("player", this.gameObject);
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
-        animator = this.gameObject.GetComponent<CharacterAnimationController>();
         attack = this.gameObject.GetComponent<CharacterAttackComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
         vfx = this.gameObject.GetComponent<PlayerVFXComponent>();
+        animator = this.gameObject.GetComponent<Animator>();
+        animator.SetFloat("AnimSpeed", 1.0f);
     }
 
     //will move to reference class if neccesary
@@ -29,41 +31,30 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     {
         Move();
         Attack();
+        Dialouge();
     }
 
     void Move()
     {
-        float x = Input.GetAxis(Horizontal);
-        float y = Input.GetAxis(Vertical);
-
-        int i = animator.index;
-        int ti = 0;
-        //TODO replace all this grox shit with a proper animator system
-        if (x > 0)
-        {
-            ti = 3;
-        }
-        else if (x < 0)
-        {
-            ti = 1;
-        }
-        else if (y > 0)
-        {
-            ti = 2;
-        }
-        else if (y < 0)
-        {
-            ti = 0;
-        }
+        float x = Input.GetAxis("Horizontal");
+        float y = Input.GetAxis("Vertical");
 
         Vector2 movement = new Vector2(x, y);
-        controller.Move(movement);
 
-        if (ti != i)
+        animator.SetFloat("MovementHorizontal", movement.x);
+        animator.SetFloat("MovementVertical", movement.y);
+
+        if(movement.x != 0 || movement.y != 0)
         {
-            i = ti;
-            animator.SetSprite(i);
+            animator.SetFloat("Speed", 5.0f);
         }
+        else
+        {
+            animator.SetFloat("Speed", 0.0f);
+        }
+                
+        controller.Move(movement);
+   
     }
 
     private float attackPower = 0;
@@ -76,7 +67,8 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         {
             hud.InitAttack(attackPower);
             vfx.InitAttack(attackPower);
-            
+            animator.SetBool("IsAttacking", true);
+            animator.SetFloat("AnimSpeed", 0.0f); //hold attack animation
             attacked = false;
             attackPower += Time.deltaTime;
             
@@ -91,7 +83,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         {
             //get direction and normalize
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
-
+            animator.SetFloat("AnimSpeed", 1.0f);  //resume attack animation
             float x = direction.x;
             float y = direction.y;
 
@@ -111,9 +103,39 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             attackPower = 0;
             hud.ResetAttack();
             vfx.ResetAttack();
+            animator.SetBool("IsAttacking", false);
         }
 
         hud.SetAttackLevel(attackPower);
         vfx.SetAttackLevel(attackPower);
+    }
+
+    void Dialouge()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 1.5f);
+
+            CharacterDialougeComponent npc = null;
+            float distance = Mathf.Infinity;
+
+            foreach(Collider2D c in colliders)
+            {
+                float distTo = Vector2.Distance(this.transform.position, c.transform.position);
+                if (distTo < distance)
+                {
+                    CharacterDialougeComponent d = c.gameObject.GetComponent<CharacterDialougeComponent>();
+                    if(d != null)
+                    {
+                        distance = distTo;
+                        npc = d;
+                    }
+                }
+            }
+            if (npc != null)
+            {
+                npc.PrintDialouge();
+            }
+        }
     }
 }
