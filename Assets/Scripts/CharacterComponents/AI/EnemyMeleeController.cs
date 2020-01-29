@@ -110,7 +110,7 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
                 isAttacking = true;
 
             }
-            else if (Vector2.Distance(this.transform.position, player.transform.position) < 4.5f && ranged != null) //if ranged isn't null, use this range.
+            else if (Vector2.Distance(this.transform.position, player.transform.position) < 4.5f && ranged != null) // if ranged isn't null, use this range.
             {
                 isAttacking = true;
             }
