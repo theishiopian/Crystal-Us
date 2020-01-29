@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerToHit: Player
+  distance: 0
+  knockback: 0
 --- !u!114 &38550344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +497,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerToHit: Player
+  distance: 1.5
+  knockback: 20
 --- !u!114 &167358570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4080,6 +4084,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462210559656193237, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: knockback
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462210559656193237, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: distance
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6462210559656193239, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
