@@ -119,7 +119,7 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
         Debug.Log("init");
         yield return new WaitForSeconds(startDelay);
         Vector2 direction = (player.transform.position - this.transform.position).normalized;
-        attack.Attack(direction, 2 * level.level, 0.1f);
+        attack.Attack(direction, 2 * level.level, 0.1f, 10);
         yield return new WaitForSeconds(endDelay);
         isAttacking = false;
         attackStarted = false;

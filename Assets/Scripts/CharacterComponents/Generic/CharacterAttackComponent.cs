@@ -13,7 +13,7 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         level = GetComponent<CharacterLevelComponent>();
     }
 
-    public bool Attack(Vector2 direction, float attackPower, float distance)
+    public bool Attack(Vector2 direction, float attackPower, float distance, float knockback)
     {
         float x = direction.x;
         float y = direction.y;
@@ -33,6 +33,7 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,distance,mask);
         Debug.DrawRay(position, direction, Color.blue,1);
         CharacterHealthComponent health = null;
+        Rigidbody2D body = null;
         try
         {
             health = hit.collider.gameObject.GetComponent<CharacterHealthComponent>();
@@ -44,6 +45,11 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         if(hit && health != null)
         {
             health.Damage(1+level.level * Mathf.CeilToInt(attackPower));
+            body = health.gameObject.GetComponent<Rigidbody2D>();
+            if(body != null && knockback>0)
+            {
+                body.AddForce(direction * knockback, ForceMode2D.Impulse);
+            }
             return true;
         }
 
@@ -52,6 +58,6 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
 
     public bool Attack(Vector2 direction, float attackPower)
     {
-        return Attack(direction, attackPower, 2);//player attack method
+        return Attack(direction, attackPower, 2, 20);//player attack method
     }
 }

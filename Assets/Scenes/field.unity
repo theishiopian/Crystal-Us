@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 167358563}
   - component: {fileID: 167358570}
   - component: {fileID: 167358569}
+  - component: {fileID: 167358571}
   m_Layer: 10
   m_Name: Enemy_Test
   m_TagString: Enemy
@@ -299,6 +300,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   XP: 0
+--- !u!50 &167358571
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167358562}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &281466963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6462210559656193229, guid: e138bac843d5e764dac9d250f50079ad,
@@ -3836,6 +3858,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6462210559656193239, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6462210559977171823, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
