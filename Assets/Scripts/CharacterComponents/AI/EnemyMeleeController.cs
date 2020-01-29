@@ -12,7 +12,7 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
     public float endDelay;
     public float rangedPower;
 
-    public Material[] effects;//temporary hurt effect TODO: replace with animation
+    public Material[] effects;// Temporary hurt effect TODO: replace with animation
 
     //component references
     private CharacterMoverComponent controller;
