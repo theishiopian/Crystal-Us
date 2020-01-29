@@ -13,7 +13,7 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         level = GetComponent<CharacterLevelComponent>();
     }
 
-    public bool Attack(Vector2 direction, float attackPower)
+    public bool Attack(Vector2 direction, float attackPower, float distance)
     {
         float x = direction.x;
         float y = direction.y;
@@ -30,7 +30,7 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         }
 
         Vector2 position = this.gameObject.transform.position;
-        RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,2,mask);
+        RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,distance,mask);
         Debug.DrawRay(position, direction, Color.blue,1);
         CharacterHealthComponent health = null;
         try
@@ -48,5 +48,10 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         }
 
         return false;
+    }
+
+    public bool Attack(Vector2 direction, float attackPower)
+    {
+        return Attack(direction, attackPower, 2);//player attack method
     }
 }

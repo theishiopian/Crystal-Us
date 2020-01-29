@@ -7,18 +7,18 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
     public float patrolDistance = 8f;   // The distance the simple AI will patrol from the patrolArea
     public GameObject player;           // The player GameObject
     public float detectionRange;   // The range at which the simple AI will begin following the player
+    public float followDistance;  // The distance the simple AI will follow the player before going back to the patrolArea
+    public float startDelay;
+    public float endDelay;
 
     public Material[] effects;//temporary hurt effect TODO: replace with animation
 
     private CharacterMoverComponent controller;
     private CharacterAttackComponent attack;
-
+    private CharacterLevelComponent level;
     private Vector3 patrolPoint;         // The position the simple AI will patrol around (start position)
-    
-    public float followDistance;  // The distance the simple AI will follow the player before going back to the patrolArea
     private float moveNext = 3f;             // While patroling, how long until the next movement
     private Vector2 moveDirection;      // Move direction
-
     private bool following = false;             // If the simple AI is following the player
 
     // Start is called before the first frame update
@@ -26,6 +26,7 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
     {
         controller = GetComponent<CharacterMoverComponent>();
         attack = GetComponent<CharacterAttackComponent>();
+        level = GetComponent<CharacterLevelComponent>();
         patrolPoint = transform.position;
         following = false;
         moveDirection = RandomDirection();
@@ -45,6 +46,7 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
     }
 
     bool isAttacking = false;
+    bool attackStarted = false;
 
     // Update is called once per frame
     void Update()
@@ -95,28 +97,49 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
 
             //detect attack
 
-            
+            if(Vector2.Distance(this.transform.position, player.transform.position) < 1.5f)
+            {
+                isAttacking = true;
+                Debug.Log("detec");
+            }
         }
         else//attack code
         {
-
+            if(!attackStarted)
+            {
+                attackStarted = true;
+                Debug.Log("attac");
+                StartCoroutine("AttackSequence");
+            }
         }
+    }
+
+    IEnumerator AttackSequence()
+    {
+        Debug.Log("init");
+        yield return new WaitForSeconds(startDelay);
+        Vector2 direction = (player.transform.position - this.transform.position).normalized;
+        attack.Attack(direction, 2 * level.level, 0.1f);
+        yield return new WaitForSeconds(endDelay);
+        isAttacking = false;
+        attackStarted = false;
+        yield return null;
     }
 
     // Check if the simple AI should follow the player or not
     bool FollowCheck()
     {
-        var distance2Player = Vector3.Distance(player.transform.position, this.transform.position);
+        var distanceToPlayer = Vector3.Distance(player.transform.position, this.transform.position);
 
         if (!following)
         {
             // While not following, check if the player is within detection range
-            return distance2Player < detectionRange;
+            return distanceToPlayer < detectionRange;
         }
         else
         {
             // While following, check if the simple AI has exceeded the follow distance
-            return distance2Player > followDistance;
+            return distanceToPlayer > followDistance;
         }
     }
 

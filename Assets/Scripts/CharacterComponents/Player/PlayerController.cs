@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         Move();
         Attack();
         Dialouge();
-        Debug.Log(attackPower);
+        //Debug.Log(attackPower);
     }
 
     void Move()

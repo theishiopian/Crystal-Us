@@ -150,10 +150,12 @@ MonoBehaviour:
   patrolDistance: 4
   player: {fileID: 281466963}
   detectionRange: 7
+  followDistance: 8
+  startDelay: 0.3
+  endDelay: 0.5
   effects:
   - {fileID: 2100000, guid: 4afc62a1eff7f6c47bcbf8c477ad600e, type: 2}
   - {fileID: 2100000, guid: 31667d909f7c97f4fa156c5a03ce2977, type: 2}
-  followDistance: 8
 --- !u!114 &167358564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -264,7 +266,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167358562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.49, y: 1.65, z: 0}
+  m_LocalPosition: {x: 8.47, y: 1.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
