@@ -15,6 +15,20 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
 
     public bool Attack(Vector2 direction, float attackPower)
     {
+        float x = direction.x;
+        float y = direction.y;
+
+        if (Mathf.Abs(x) > Mathf.Abs(y))
+        {
+            direction.x = Mathf.Sign(x);
+            direction.y = 0;
+        }
+        else
+        {
+            direction.y = Mathf.Sign(y);
+            direction.x = 0;
+        }
+
         Vector2 position = this.gameObject.transform.position;
         RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,2,mask);
         Debug.DrawRay(position, direction, Color.blue,1);

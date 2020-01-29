@@ -85,19 +85,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             //get direction and normalize
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
             animator.SetFloat("AnimSpeed", 1.0f);  //resume attack animation
-            float x = direction.x;
-            float y = direction.y;
-
-            if(Mathf.Abs(x)>Mathf.Abs(y))
-            {
-                direction.x = Mathf.Sign(x);
-                direction.y = 0;
-            }
-            else
-            {
-                direction.y = Mathf.Sign(y);
-                direction.x = 0;
-            }
+            
 
             hasAttacked = true;
             attack.Attack(direction, attackPower);
