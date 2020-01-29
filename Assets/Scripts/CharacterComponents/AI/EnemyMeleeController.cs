@@ -13,10 +13,12 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
 
     public Material[] effects;//temporary hurt effect TODO: replace with animation
 
+    //component references
     private CharacterMoverComponent controller;
-    private CharacterAttackComponent attack;
+    private CharacterMeleeComponent attack;
     private CharacterLevelComponent level;
     private new SpriteRenderer renderer;
+
     private Vector3 patrolPoint;         // The position the simple AI will patrol around (start position)
     private float moveNext = 3f;             // While patroling, how long until the next movement
     private Vector2 moveDirection;      // Move direction
@@ -26,7 +28,7 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
     void Start()
     {
         controller = GetComponent<CharacterMoverComponent>();
-        attack = GetComponent<CharacterAttackComponent>();
+        attack = GetComponent<CharacterMeleeComponent>();
         level = GetComponent<CharacterLevelComponent>();
         renderer = GetComponent<SpriteRenderer>();
         patrolPoint = transform.position;

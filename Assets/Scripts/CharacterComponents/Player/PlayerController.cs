@@ -5,21 +5,23 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     private CharacterMoverComponent controller;
-    private CharacterAttackComponent attack;
+    private CharacterMeleeComponent meleeAttack;
     private PlayerHUDComponent hud;
     private PlayerVFXComponent vfx;
     private Animator animator;
+    private CharacterRangedComponent rangedAttack;
 
     // Start is called before the first frame update
     void Start()
     {
         GlobalVariables.globalObjects.Add("player", this.gameObject);
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
-        attack = this.gameObject.GetComponent<CharacterAttackComponent>();
+        meleeAttack = this.gameObject.GetComponent<CharacterMeleeComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
         vfx = this.gameObject.GetComponent<PlayerVFXComponent>();
         animator = this.gameObject.GetComponent<Animator>();
         animator.SetFloat("AnimSpeed", 1.0f);
+        rangedAttack = GetComponent<CharacterRangedComponent>();
     }
 
     //will move to reference class if neccesary
@@ -88,7 +90,15 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             
 
             hasAttacked = true;
-            attack.Attack(direction, attackPower);
+            meleeAttack.Attack(direction, attackPower);
+            if(attackPower >= 2)
+            {
+                rangedAttack.Attack(direction, 20);
+            }
+            else if(attackPower >= 1)
+            {
+                rangedAttack.Attack(direction, 20);
+            }
             attackPower = 0;
             hud.ResetAttack();
             vfx.ResetAttack();
