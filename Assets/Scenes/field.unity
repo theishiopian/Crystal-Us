@@ -16490,6 +16490,82 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1711272586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1711272588}
+  - component: {fileID: 1711272587}
+  m_Layer: 0
+  m_Name: Border Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!68 &1711272587
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711272586}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -16.12685, y: 2.3611517}
+  - {x: -16.099245, y: -9.310437}
+  - {x: -8.397152, y: -9.284193}
+  - {x: -8.452301, y: -22.048634}
+  - {x: -11.081537, y: -22.057346}
+  - {x: -10.940367, y: -29.735912}
+  - {x: -25.134, y: -29.74413}
+  - {x: -25.035719, y: -37.38089}
+  - {x: -45.53008, y: -37.419212}
+  - {x: -45.544956, y: -28.451033}
+  - {x: -63.484287, y: -28.48022}
+  - {x: -63.471935, y: -19.503445}
+  - {x: -73.706245, y: -19.518112}
+  - {x: -73.69806, y: -15.648249}
+  - {x: -71.136925, y: -15.657583}
+  - {x: -71.132614, y: -10.552463}
+  - {x: -67.304184, y: -10.539541}
+  - {x: -67.29912, y: 3.5338545}
+  - {x: -58.324986, y: 3.5332346}
+  - {x: -58.34356, y: 9.95318}
+  - {x: -39.139973, y: 9.949116}
+  - {x: -39.146954, y: 7.3740788}
+  - {x: -17.387339, y: 7.4056206}
+  - {x: -17.37554, y: 9.93017}
+  - {x: -3.2994156, y: 9.960283}
+  - {x: -3.2923317, y: 8.669249}
+  - {x: -4.57732, y: 8.669537}
+  - {x: -4.555252, y: 2.25068}
+  - {x: -16.113827, y: 2.283721}
+--- !u!4 &1711272588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1711272586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.420876, y: 10.538483, z: 2.0767665}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2083035202
 GameObject:
   m_ObjectHideFlags: 0
