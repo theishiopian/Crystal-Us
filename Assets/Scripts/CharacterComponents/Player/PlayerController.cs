@@ -29,9 +29,10 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     // Update is called once per frame
     void Update()
     {
-        
         Move();
         Attack();
+        Dialouge();
+        //Debug.Log(attackPower);
     }
 
     void Move()
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     }
 
     private float attackPower = 0;
-    private bool attacked = true;
+    private bool hasAttacked = true;
 
     void Attack()
     {
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             vfx.InitAttack(attackPower);
             animator.SetBool("IsAttacking", true);
             animator.SetFloat("AnimSpeed", 0.0f); //hold attack animation
-            attacked = false;
+            hasAttacked = false;
             attackPower += Time.deltaTime;
             
             if(attackPower > 2f)//if you can get clamp to work here, go for it!
@@ -79,26 +80,14 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
             //Debug.Log("attack power: "+attackPower);
         }
-        else if(!attacked)
+        else if(!hasAttacked)
         {
             //get direction and normalize
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
             animator.SetFloat("AnimSpeed", 1.0f);  //resume attack animation
-            float x = direction.x;
-            float y = direction.y;
+            
 
-            if(Mathf.Abs(x)>Mathf.Abs(y))
-            {
-                direction.x = Mathf.Sign(x);
-                direction.y = 0;
-            }
-            else
-            {
-                direction.y = Mathf.Sign(y);
-                direction.x = 0;
-            }
-
-            attacked = true;
+            hasAttacked = true;
             attack.Attack(direction, attackPower);
             attackPower = 0;
             hud.ResetAttack();
@@ -108,5 +97,34 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
         hud.SetAttackLevel(attackPower);
         vfx.SetAttackLevel(attackPower);
+    }
+
+    void Dialouge()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(this.transform.position, 1.5f);
+
+            CharacterDialougeComponent npc = null;
+            float distance = Mathf.Infinity;
+
+            foreach(Collider2D c in colliders)
+            {
+                float distTo = Vector2.Distance(this.transform.position, c.transform.position);
+                if (distTo < distance)
+                {
+                    CharacterDialougeComponent d = c.gameObject.GetComponent<CharacterDialougeComponent>();
+                    if(d != null)
+                    {
+                        distance = distTo;
+                        npc = d;
+                    }
+                }
+            }
+            if (npc != null)
+            {
+                npc.PrintDialouge();
+            }
+        }
     }
 }

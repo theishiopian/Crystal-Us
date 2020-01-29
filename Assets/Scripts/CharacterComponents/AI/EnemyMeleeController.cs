@@ -2,26 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharacterController
+public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     public float patrolDistance = 8f;   // The distance the simple AI will patrol from the patrolArea
     public GameObject player;           // The player GameObject
     public float detectionRange;   // The range at which the simple AI will begin following the player
+    public float followDistance;  // The distance the simple AI will follow the player before going back to the patrolArea
+    public float startDelay;
+    public float endDelay;
+
+    public Material[] effects;//temporary hurt effect TODO: replace with animation
 
     private CharacterMoverComponent controller;
-
+    private CharacterAttackComponent attack;
+    private CharacterLevelComponent level;
+    private new SpriteRenderer renderer;
     private Vector3 patrolPoint;         // The position the simple AI will patrol around (start position)
-    
-    public float followDistance;  // The distance the simple AI will follow the player before going back to the patrolArea
     private float moveNext = 3f;             // While patroling, how long until the next movement
     private Vector2 moveDirection;      // Move direction
-
     private bool following = false;             // If the simple AI is following the player
 
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterMoverComponent>();
+        attack = GetComponent<CharacterAttackComponent>();
+        level = GetComponent<CharacterLevelComponent>();
+        renderer = GetComponent<SpriteRenderer>();
         patrolPoint = transform.position;
         following = false;
         moveDirection = RandomDirection();
@@ -40,66 +47,101 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
         }
     }
 
+    bool isAttacking = false;
+    bool attackStarted = false;
+
     // Update is called once per frame
     void Update()
     {
-        if(following)
+        if(!isAttacking)
         {
-            Debug.DrawLine(this.transform.position, player.transform.position, Color.red);
-        }
-        else
-        {
-            Debug.DrawLine(this.transform.position, patrolPoint, Color.red);
-        }
-
-        // Perform follow check
-        following = FollowCheck();
-        
-        moveNext -= Time.deltaTime;
-
-        if (!following)
-        {
-            // While not following player, patrol area in random directions
-            if (moveNext <= 0f)
+            if (following)
             {
-                // Reset timer for next direction change
-                moveNext = 3f;
-                // Check if within patrol distance
-                if ((patrolPoint - this.transform.position).magnitude < patrolDistance)
+                Debug.DrawLine(this.transform.position, player.transform.position, Color.red);
+            }
+            else
+            {
+                Debug.DrawLine(this.transform.position, patrolPoint, Color.red);
+            }
+
+            // Perform follow check
+            following = FollowCheck();
+
+            moveNext -= Time.deltaTime;
+
+            if (!following)
+            {
+                // While not following player, patrol area in random directions
+                if (moveNext <= 0f)
                 {
-                    moveDirection = RandomDirection();              // Move randomly
+                    // Reset timer for next direction change
+                    moveNext = 3f;
+                    // Check if within patrol distance
+                    if ((patrolPoint - this.transform.position).magnitude < patrolDistance)
+                    {
+                        moveDirection = RandomDirection();              // Move randomly
+                    }
+                    else
+                    {
+                        Vector2 dir = TargetDirection(patrolPoint);    // Move towards patrol area
+                        moveDirection = dir;
+                    }
                 }
-                else
-                {
-                    Vector2 dir = TargetDirection(patrolPoint);    // Move towards patrol area
-                    moveDirection = dir;
-                } 
+            }
+            else
+            {
+                moveDirection = TargetDirection(player.transform.position); // Move towards player
+            }
+
+            // Move
+
+            controller.Move(moveDirection);
+
+            //detect attack
+
+            if(Vector2.Distance(this.transform.position, player.transform.position) < 1.5f)
+            {
+                isAttacking = true;
+
             }
         }
-        else
+        else//attack code
         {
-            moveDirection = TargetDirection(player.transform.position); // Move towards player
+            if(!attackStarted)
+            {
+                attackStarted = true;
+                StartCoroutine("AttackSequence");
+            }
         }
+    }
 
-        // Move
-
-        controller.Move(moveDirection);
+    IEnumerator AttackSequence()
+    {
+        yield return new WaitForSeconds(startDelay);
+        Vector2 direction = (player.transform.position - this.transform.position).normalized;
+        attack.Attack(direction, 2 * level.level, 0.1f, 10);
+        renderer.material = effects[1];
+        yield return new WaitForSeconds(endDelay);
+        isAttacking = false;
+        attackStarted = false;
+        renderer.material = effects[0];
+        yield return null;
     }
 
     // Check if the simple AI should follow the player or not
     bool FollowCheck()
     {
-        var distance2Player = Vector3.Distance(player.transform.position, this.transform.position);
+        var distanceToPlayer = Vector3.Distance(player.transform.position, this.transform.position);
 
         if (!following)
         {
             // While not following, check if the player is within detection range
-            return distance2Player < detectionRange;
+            return distanceToPlayer < detectionRange;
         }
         else
         {
             // While following, check if the simple AI has exceeded the follow distance
-            return distance2Player > followDistance;
+            return distanceToPlayer > followDistance;
         }
     }
 
