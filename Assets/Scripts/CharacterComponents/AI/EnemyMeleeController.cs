@@ -121,7 +121,7 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
     {
         yield return new WaitForSeconds(startDelay);
         Vector2 direction = (player.transform.position - this.transform.position).normalized;
-        attack.Attack(direction, 2 * level.level, 0.1f, 10);
+        attack.Attack(direction);
         renderer.material = effects[1];
         yield return new WaitForSeconds(endDelay);
         isAttacking = false;
