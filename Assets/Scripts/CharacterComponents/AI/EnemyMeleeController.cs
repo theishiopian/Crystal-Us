@@ -105,10 +105,14 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
 
             //detect attack
 
-            if(Vector2.Distance(this.transform.position, player.transform.position) < 1.5f)
+            if(Vector2.Distance(this.transform.position, player.transform.position) < 1.5f && ranged == null)
             {
                 isAttacking = true;
 
+            }
+            else if (Vector2.Distance(this.transform.position, player.transform.position) < 4.5f && ranged != null) //if ranged isn't null, use this range.
+            {
+                isAttacking = true;
             }
         }
         else//meleecode
