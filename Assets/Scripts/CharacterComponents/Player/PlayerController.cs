@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         Move();
         Attack();
         Dialouge();
+        Debug.Log(attackPower);
     }
 
     void Move()
@@ -58,7 +59,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     }
 
     private float attackPower = 0;
-    private bool attacked = true;
+    private bool hasAttacked = true;
 
     void Attack()
     {
@@ -69,7 +70,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             vfx.InitAttack(attackPower);
             animator.SetBool("IsAttacking", true);
             animator.SetFloat("AnimSpeed", 0.0f); //hold attack animation
-            attacked = false;
+            hasAttacked = false;
             attackPower += Time.deltaTime;
             
             if(attackPower > 2f)//if you can get clamp to work here, go for it!
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
             //Debug.Log("attack power: "+attackPower);
         }
-        else if(!attacked)
+        else if(!hasAttacked)
         {
             //get direction and normalize
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
@@ -98,7 +99,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
                 direction.x = 0;
             }
 
-            attacked = true;
+            hasAttacked = true;
             attack.Attack(direction, attackPower);
             attackPower = 0;
             hud.ResetAttack();

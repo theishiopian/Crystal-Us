@@ -332,7 +332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &1707882693
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -412,7 +412,6 @@ MonoBehaviour:
   - I am an NPC
   - I can talk to you
   - I won't pause the game to do it
-  talkingSpeed: 0.1
 --- !u!61 &1707882696
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -465,7 +464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &1777618841
 BoxCollider2D:
   m_ObjectHideFlags: 0

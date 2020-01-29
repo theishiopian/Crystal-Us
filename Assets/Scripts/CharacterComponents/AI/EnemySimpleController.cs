@@ -8,7 +8,10 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
     public GameObject player;           // The player GameObject
     public float detectionRange;   // The range at which the simple AI will begin following the player
 
+    public Material[] effects;//temporary hurt effect TODO: replace with animation
+
     private CharacterMoverComponent controller;
+    private CharacterAttackComponent attack;
 
     private Vector3 patrolPoint;         // The position the simple AI will patrol around (start position)
     
@@ -22,6 +25,7 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
     void Start()
     {
         controller = GetComponent<CharacterMoverComponent>();
+        attack = GetComponent<CharacterAttackComponent>();
         patrolPoint = transform.position;
         following = false;
         moveDirection = RandomDirection();
@@ -40,50 +44,63 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
         }
     }
 
+    bool isAttacking = false;
+
     // Update is called once per frame
     void Update()
     {
-        if(following)
+        if(!isAttacking)
         {
-            Debug.DrawLine(this.transform.position, player.transform.position, Color.red);
-        }
-        else
-        {
-            Debug.DrawLine(this.transform.position, patrolPoint, Color.red);
-        }
-
-        // Perform follow check
-        following = FollowCheck();
-        
-        moveNext -= Time.deltaTime;
-
-        if (!following)
-        {
-            // While not following player, patrol area in random directions
-            if (moveNext <= 0f)
+            if (following)
             {
-                // Reset timer for next direction change
-                moveNext = 3f;
-                // Check if within patrol distance
-                if ((patrolPoint - this.transform.position).magnitude < patrolDistance)
-                {
-                    moveDirection = RandomDirection();              // Move randomly
-                }
-                else
-                {
-                    Vector2 dir = TargetDirection(patrolPoint);    // Move towards patrol area
-                    moveDirection = dir;
-                } 
+                Debug.DrawLine(this.transform.position, player.transform.position, Color.red);
             }
+            else
+            {
+                Debug.DrawLine(this.transform.position, patrolPoint, Color.red);
+            }
+
+            // Perform follow check
+            following = FollowCheck();
+
+            moveNext -= Time.deltaTime;
+
+            if (!following)
+            {
+                // While not following player, patrol area in random directions
+                if (moveNext <= 0f)
+                {
+                    // Reset timer for next direction change
+                    moveNext = 3f;
+                    // Check if within patrol distance
+                    if ((patrolPoint - this.transform.position).magnitude < patrolDistance)
+                    {
+                        moveDirection = RandomDirection();              // Move randomly
+                    }
+                    else
+                    {
+                        Vector2 dir = TargetDirection(patrolPoint);    // Move towards patrol area
+                        moveDirection = dir;
+                    }
+                }
+            }
+            else
+            {
+                moveDirection = TargetDirection(player.transform.position); // Move towards player
+            }
+
+            // Move
+
+            controller.Move(moveDirection);
+
+            //detect attack
+
+            
         }
-        else
+        else//attack code
         {
-            moveDirection = TargetDirection(player.transform.position); // Move towards player
+
         }
-
-        // Move
-
-        controller.Move(moveDirection);
     }
 
     // Check if the simple AI should follow the player or not
