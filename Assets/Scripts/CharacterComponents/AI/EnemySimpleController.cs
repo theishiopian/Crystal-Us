@@ -16,6 +16,7 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
     private CharacterMoverComponent controller;
     private CharacterAttackComponent attack;
     private CharacterLevelComponent level;
+    private SpriteRenderer renderer;
     private Vector3 patrolPoint;         // The position the simple AI will patrol around (start position)
     private float moveNext = 3f;             // While patroling, how long until the next movement
     private Vector2 moveDirection;      // Move direction
@@ -27,6 +28,7 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
         controller = GetComponent<CharacterMoverComponent>();
         attack = GetComponent<CharacterAttackComponent>();
         level = GetComponent<CharacterLevelComponent>();
+        renderer = GetComponent<SpriteRenderer>();
         patrolPoint = transform.position;
         following = false;
         moveDirection = RandomDirection();
@@ -120,9 +122,11 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
         yield return new WaitForSeconds(startDelay);
         Vector2 direction = (player.transform.position - this.transform.position).normalized;
         attack.Attack(direction, 2 * level.level, 0.1f, 10);
+        renderer.material = effects[1];
         yield return new WaitForSeconds(endDelay);
         isAttacking = false;
         attackStarted = false;
+        renderer.material = effects[0];
         yield return null;
     }
 
