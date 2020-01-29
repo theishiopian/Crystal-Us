@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterLevelComponent))]
-public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
+public class CharacterMeleeComponent : MonoBehaviour, ICharacterComponent
 {
     public string layerToHit;
-
+    public float distance;
+    public float knockback;
     private LayerMask mask;
     private CharacterLevelComponent level;
     void Start()
@@ -13,7 +14,7 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         level = GetComponent<CharacterLevelComponent>();
     }
 
-    public bool Attack(Vector2 direction, float attackPower, float distance, float knockback)
+    private bool Attack(Vector2 direction, float attackPower, float distance, float knockback)
     {
         float x = direction.x;
         float y = direction.y;
@@ -44,7 +45,7 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         }
         if(hit && health != null)
         {
-            health.Damage(1+level.level * Mathf.CeilToInt(attackPower));
+            health.Damage(Mathf.CeilToInt(attackPower));
             body = health.gameObject.GetComponent<Rigidbody2D>();
             if(body != null && knockback>0)
             {
@@ -56,8 +57,13 @@ public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
         return false;
     }
 
-    public bool Attack(Vector2 direction, float attackPower)
+    public bool Attack(Vector2 direction, float attackPower)//player attack method
     {
-        return Attack(direction, attackPower, 2, 20);//player attack method
+        return Attack(direction, attackPower * level.level, 2, 20);
+    }
+
+    public bool Attack(Vector2 direction)//enemy attack method
+    {
+        return Attack(direction, 2 * level.level, distance, knockback);
     }
 }
