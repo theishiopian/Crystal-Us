@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(CharacterLevelComponent))]
-public class CharacterAttackComponent : MonoBehaviour, ICharacterComponent
+public class CharacterMeleeComponent : MonoBehaviour, ICharacterComponent
 {
     public string layerToHit;
 

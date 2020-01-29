@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     private CharacterMoverComponent controller;
-    private CharacterAttackComponent attack;
+    private CharacterMeleeComponent attack;
     private PlayerHUDComponent hud;
     private PlayerVFXComponent vfx;
     private Animator animator;
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     {
         GlobalVariables.globalObjects.Add("player", this.gameObject);
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
-        attack = this.gameObject.GetComponent<CharacterAttackComponent>();
+        attack = this.gameObject.GetComponent<CharacterMeleeComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
         vfx = this.gameObject.GetComponent<PlayerVFXComponent>();
         animator = this.gameObject.GetComponent<Animator>();
