@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharacterController
+public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     public float patrolDistance = 8f;   // The distance the simple AI will patrol from the patrolArea
     public GameObject player;           // The player GameObject
@@ -16,7 +16,7 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
     private CharacterMoverComponent controller;
     private CharacterAttackComponent attack;
     private CharacterLevelComponent level;
-    private SpriteRenderer renderer;
+    private new SpriteRenderer renderer;
     private Vector3 patrolPoint;         // The position the simple AI will patrol around (start position)
     private float moveNext = 3f;             // While patroling, how long until the next movement
     private Vector2 moveDirection;      // Move direction
@@ -102,7 +102,7 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
             if(Vector2.Distance(this.transform.position, player.transform.position) < 1.5f)
             {
                 isAttacking = true;
-                Debug.Log("detec");
+
             }
         }
         else//attack code
@@ -110,7 +110,6 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
             if(!attackStarted)
             {
                 attackStarted = true;
-                Debug.Log("attac");
                 StartCoroutine("AttackSequence");
             }
         }
@@ -118,7 +117,6 @@ public class EnemySimpleController : MonoBehaviour, ICharacterComponent, ICharac
 
     IEnumerator AttackSequence()
     {
-        Debug.Log("init");
         yield return new WaitForSeconds(startDelay);
         Vector2 direction = (player.transform.position - this.transform.position).normalized;
         attack.Attack(direction, 2 * level.level, 0.1f, 10);
