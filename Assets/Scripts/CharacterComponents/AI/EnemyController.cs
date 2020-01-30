@@ -106,6 +106,7 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
             animator.SetFloat("MovementHorizontal", moveDirection.x);
             animator.SetFloat("MovementVertical", moveDirection.y);
             controller.Move(moveDirection);
+            
 
             //detect attack
 
@@ -142,11 +143,11 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
         {
             ranged.Attack(direction, rangedPower);
         }
-        renderer.material = effects[1];
+        //renderer.material = effects[1];
         yield return new WaitForSeconds(endDelay);
         isAttacking = false;
         attackStarted = false;
-        renderer.material = effects[0];
+        //renderer.material = effects[0];
         yield return null;
     }
 
