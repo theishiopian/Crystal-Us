@@ -64,6 +64,7 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
         if(!isAttacking)
         {
             animator.SetBool("IsAttacking", false);
+            animator.SetBool("IsDamaged", false);
             if (following)
             {
                 Debug.DrawLine(this.transform.position, player.transform.position, Color.red);

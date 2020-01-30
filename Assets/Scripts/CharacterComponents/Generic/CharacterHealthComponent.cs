@@ -52,7 +52,6 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
             }
         }
         anim.SetBool("IsDamaged", false);
-        enemyAnim.SetBool("IsDamaged", false);
     }
 
     void Die()
