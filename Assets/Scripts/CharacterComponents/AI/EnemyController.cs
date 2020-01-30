@@ -26,7 +26,9 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
     private Vector2 moveDirection;      // Move direction
     private bool following = false;             // If the simple AI is following the player
 
-    
+    private Animator animator;          //animator component
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,7 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
         patrolPoint = transform.position;
         following = false;
         moveDirection = RandomDirection();
+        animator = this.gameObject.GetComponent<Animator>();
 
         if(player == null)
         {
@@ -61,6 +64,7 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
     {
         if(!isAttacking)
         {
+            animator.SetBool("IsAttacking", false);
             if (following)
             {
                 Debug.DrawLine(this.transform.position, player.transform.position, Color.red);
@@ -100,7 +104,8 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
             }
 
             // Move
-
+            animator.SetFloat("MovementHorizontal", moveDirection.x);
+            animator.SetFloat("MovementVertical", moveDirection.y);
             controller.Move(moveDirection);
 
             //detect attack
@@ -129,6 +134,7 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
     {
         yield return new WaitForSeconds(startDelay);
         Vector2 direction = (player.transform.position - this.transform.position).normalized;
+        animator.SetBool("IsAttacking", true);
         if (ranged == null) // If the ranged component is null then use melee, otherwise use ranged.
         {
             melee.Attack(direction);

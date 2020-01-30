@@ -8,18 +8,25 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
     public int health;
     public int armor;
 
+    Animator anim;
+
     private bool isPlayer;
 
     void Start()
     {
         health = maxHealth;
         isPlayer = (this.gameObject.tag.Equals("Player"));
+        anim = this.gameObject.GetComponent<Animator>();
     }
 
     public void Damage(int amount)
     {
         health -= (int)Mathf.Clamp(amount-armor, 1,Mathf.Infinity);
-        if(health <= 0)
+        if(health > 0 && isPlayer)
+        {
+            anim.SetBool("IsDamaged", true);
+        }
+        else if(health <= 0)
         {
             if(isPlayer)
             {
@@ -32,6 +39,7 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
                 Die();
             }
         }
+        anim.SetBool("IsDamaged", false);
     }
 
     void Die()
