@@ -129,8 +129,9 @@ GameObject:
   - component: {fileID: 167358570}
   - component: {fileID: 167358569}
   - component: {fileID: 167358571}
+  - component: {fileID: 167358572}
   m_Layer: 10
-  m_Name: Melee_Enemy_Test
+  m_Name: Enemy Test
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -154,7 +155,7 @@ MonoBehaviour:
   followDistance: 8
   startDelay: 0.3
   endDelay: 0.5
-  rangedPower: 0
+  rangedPower: 20
   effects:
   - {fileID: 2100000, guid: 4afc62a1eff7f6c47bcbf8c477ad600e, type: 2}
   - {fileID: 2100000, guid: 31667d909f7c97f4fa156c5a03ce2977, type: 2}
@@ -324,6 +325,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &167358572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 167358562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6f737e20f57db4b81b391e78563bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 3000183560391919256, guid: 8cdbe43559160ef409dba8d833d57454, type: 3}
 --- !u!1 &281466963 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6462210559656193229, guid: e138bac843d5e764dac9d250f50079ad,

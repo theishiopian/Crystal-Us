@@ -129,7 +129,7 @@ public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterCon
     {
         yield return new WaitForSeconds(startDelay);
         Vector2 direction = (player.transform.position - this.transform.position).normalized;
-        if (ranged = null) // If the ranged component is null then use melee, otherwise use ranged.
+        if (ranged == null) // If the ranged component is null then use melee, otherwise use ranged.
         {
             melee.Attack(direction);
         }
