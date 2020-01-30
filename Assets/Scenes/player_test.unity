@@ -26687,6 +26687,7 @@ MonoBehaviour:
   maxHealth: 20
   health: 20
   armor: 0
+  target: {fileID: 0}
 --- !u!114 &1777568857
 MonoBehaviour:
   m_ObjectHideFlags: 0
