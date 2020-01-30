@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharacterController
+public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     public float patrolDistance = 8f;   // The distance the simple AI will patrol from the patrolArea
     public GameObject player;           // The player GameObject
@@ -10,12 +10,14 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
     public float followDistance;  // The distance the simple AI will follow the player before going back to the patrolArea
     public float startDelay;
     public float endDelay;
+    public float rangedPower;
 
-    public Material[] effects;//temporary hurt effect TODO: replace with animation
+    public Material[] effects;// Temporary hurt effect TODO: replace with animation
 
     //component references
     private CharacterMoverComponent controller;
-    private CharacterMeleeComponent attack;
+    private CharacterMeleeComponent melee; // Will use melee if ranged is null
+    private CharacterRangedComponent ranged; // Will use ranged while not null
     private CharacterLevelComponent level;
     private new SpriteRenderer renderer;
 
@@ -24,11 +26,13 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
     private Vector2 moveDirection;      // Move direction
     private bool following = false;             // If the simple AI is following the player
 
+    
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterMoverComponent>();
-        attack = GetComponent<CharacterMeleeComponent>();
+        melee = GetComponent<CharacterMeleeComponent>();
+        ranged = GetComponent<CharacterRangedComponent>();
         level = GetComponent<CharacterLevelComponent>();
         renderer = GetComponent<SpriteRenderer>();
         patrolPoint = transform.position;
@@ -101,13 +105,17 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
 
             //detect attack
 
-            if(Vector2.Distance(this.transform.position, player.transform.position) < 1.5f)
+            if(Vector2.Distance(this.transform.position, player.transform.position) < 1.5f && ranged == null)
             {
                 isAttacking = true;
 
             }
+            else if (Vector2.Distance(this.transform.position, player.transform.position) < 4.5f && ranged != null) // If ranged isn't null, use this range.
+            {
+                isAttacking = true;
+            }
         }
-        else//attack code
+        else//meleecode
         {
             if(!attackStarted)
             {
@@ -121,7 +129,14 @@ public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharact
     {
         yield return new WaitForSeconds(startDelay);
         Vector2 direction = (player.transform.position - this.transform.position).normalized;
-        attack.Attack(direction, 2 * level.level, 0.1f, 10);
+        if (ranged == null) // If the ranged component is null then use melee, otherwise use ranged.
+        {
+            melee.Attack(direction);
+        }
+        else
+        {
+            ranged.Attack(direction, rangedPower);
+        }
         renderer.material = effects[1];
         yield return new WaitForSeconds(endDelay);
         isAttacking = false;
