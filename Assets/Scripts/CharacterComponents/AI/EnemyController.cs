@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMeleeController : MonoBehaviour, ICharacterComponent, ICharacterController
+public class EnemyController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     public float patrolDistance = 8f;   // The distance the simple AI will patrol from the patrolArea
     public GameObject player;           // The player GameObject
