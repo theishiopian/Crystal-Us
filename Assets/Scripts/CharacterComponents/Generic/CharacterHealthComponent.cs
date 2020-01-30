@@ -9,6 +9,9 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
     public int armor;
 
     Animator anim;
+    Animator enemyAnim;
+
+    public GameObject target;
 
     private bool isPlayer;
 
@@ -22,6 +25,8 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
     public void Damage(int amount)
     {
         health -= (int)Mathf.Clamp(amount-armor, 1,Mathf.Infinity);
+        //enemyAnim = target.GetComponent<Animator>();
+        //enemyAnim.SetBool("IsDamaged", true);
         if(health > 0 && isPlayer)
         {
             anim.SetBool("IsDamaged", true);
@@ -40,6 +45,7 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
             }
         }
         anim.SetBool("IsDamaged", false);
+        //enemyAnim.SetBool("IsDamaged", false);
     }
 
     void Die()
