@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
     void Awake()
     {
-        GlobalVariables.globalObjects.Add("player", this.gameObject);
+        GlobalVariables.globalObjects["player"] = this.gameObject;
     }
 
     // Start is called before the first frame update
