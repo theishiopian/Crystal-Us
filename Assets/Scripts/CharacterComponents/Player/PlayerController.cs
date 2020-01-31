@@ -11,10 +11,15 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     private Animator animator;
     private CharacterRangedComponent rangedAttack;
 
+    void Awake()
+    {
+        GlobalVariables.globalObjects.Add("player", this.gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        GlobalVariables.globalObjects.Add("player", this.gameObject);
+        this.transform.position = GlobalVariables.spawnPos;
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
         meleeAttack = this.gameObject.GetComponent<CharacterMeleeComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
