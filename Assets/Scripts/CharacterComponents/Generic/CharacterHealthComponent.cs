@@ -11,8 +11,6 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
     Animator anim;
     Animator enemyAnim;
 
-    public GameObject target;
-
     private bool isPlayer;
 
     void Start()
@@ -56,7 +54,7 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
 
     void Die()
     {
-        Debug.Log("dead");
+        //Debug.Log("dead");
         Destroy(this.gameObject, 0.1f);//todo: death effects? object pool?
     }
 }

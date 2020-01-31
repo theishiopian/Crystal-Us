@@ -26,7 +26,7 @@ public class BulletController : MonoBehaviour
     {
         if(((1 << collision.gameObject.layer) & mask) != 0)//bitmask shit, do not touch
         {
-            Debug.Log(true);
+            //Debug.Log(true);
 
             CharacterHealthComponent health = collision.gameObject.GetComponent<CharacterHealthComponent>();
 
