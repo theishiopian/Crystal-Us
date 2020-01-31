@@ -369,9 +369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfa27eaecac9b7448b37230816ed55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolDistance: 8
+  patrolDistance: 4
   player: {fileID: 1777568847}
-  detectionRange: 4
+  detectionRange: 5
   followDistance: 6
   startDelay: 0.2
   endDelay: 0.3
@@ -471,7 +471,6 @@ MonoBehaviour:
   maxHealth: 20
   health: 20
   armor: 0
-  target: {fileID: 0}
 --- !u!1 &263147185
 GameObject:
   m_ObjectHideFlags: 0
@@ -26801,7 +26800,6 @@ MonoBehaviour:
   maxHealth: 20
   health: 20
   armor: 0
-  target: {fileID: 0}
 --- !u!114 &1777568857
 MonoBehaviour:
   m_ObjectHideFlags: 0
