@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     // Update is called once per frame
     void Update()
     {
-        if (!animator.GetBool("IsAttacking"))
+        if (!animator.GetBool("IsAttacking") && !animator.GetBool("IsDamaged"))
         {
             Move();
         }
@@ -97,6 +97,24 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         //Debug.Log(arrowLevel);
         if(Input.GetMouseButton(0))//TODO replace with axis
         {
+            Vector2 atkdir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - this.transform.position;
+
+            float x = atkdir.x;
+            float y = atkdir.y;
+
+            if (Mathf.Abs(x) > Mathf.Abs(y))
+            {
+                x = Mathf.Sign(x);
+                y = 0;
+            }
+            else
+            {
+                y = Mathf.Sign(y);
+                x = 0;
+            }
+            animator.SetFloat("AttackHorizontal", x);
+            animator.SetFloat("AttackVertical", y);
+
             hud.InitAttack(attackPower);
             vfx.InitAttack(attackPower);
             animator.SetBool("IsAttacking", true);
@@ -115,9 +133,8 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         {
             //get direction and normalize
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition)-this.transform.position;
-            animator.SetFloat("AnimSpeed", 1.0f);  //resume attack animation
-            
 
+            animator.SetFloat("AnimSpeed", 1.0f);  //resume attack animation
             hasAttacked = true;
             meleeAttack.Attack(direction, attackPower);
             if(attackPower >= 2)

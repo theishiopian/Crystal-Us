@@ -33,9 +33,6 @@ public class CharacterMeleeComponent : MonoBehaviour, ICharacterComponent
             direction.x = 0;
         }
 
-        animator.SetFloat("AttackHorizontal", direction.x);
-        animator.SetFloat("AttackVertical", direction.y);
-
         Vector2 position = this.gameObject.transform.position;
         RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,distance,mask);
         Debug.DrawRay(position, direction, Color.blue,1);
@@ -49,7 +46,8 @@ public class CharacterMeleeComponent : MonoBehaviour, ICharacterComponent
         {
             //add debug code here if needed
         }
-        if(hit && health != null)
+
+        if (hit && health != null)
         {
             health.Damage(Mathf.CeilToInt(attackPower));
             body = health.gameObject.GetComponent<Rigidbody2D>();
