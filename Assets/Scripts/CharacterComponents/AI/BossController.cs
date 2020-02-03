@@ -10,16 +10,20 @@ public enum BossState
 }
 
 
-public class BossController : MonoBehaviour
+public class BossController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
     public BossState currentState = BossState.MOVING;
 
     public GameObject player;
 
-    float interval;
+
+    private Rigidbody2D body;
+
 
     private void Start()
     {
+        body = this.GetComponent<Rigidbody2D>();
+
         interval = Random.Range(3, 8);
         Object cache;
         if (player == null && GlobalVariables.globalObjects.TryGetValue("player", out cache)) player = (GameObject)cache;
@@ -28,7 +32,7 @@ public class BossController : MonoBehaviour
     }
 
     float t = 0;
-    
+    float interval;
 
     private void Update()
     {
@@ -57,9 +61,19 @@ public class BossController : MonoBehaviour
         Debug.Log("moving");
     }
 
+    bool spinning = false;
+
     private void Spin()
     {
         Debug.Log("spinning");
+        if(!spinning)
+        {
+            Vector2 dir = Random.insideUnitCircle.normalized * 10;
+
+            body.AddForce(dir, ForceMode2D.Impulse);
+
+            spinning = true;
+        }
     }
 
     private void Launch()
@@ -69,6 +83,7 @@ public class BossController : MonoBehaviour
 
     private void ChangeState()
     {
+        body.velocity = Vector2.zero;
         if(currentState != BossState.MOVING)
         {
             currentState = BossState.MOVING;
@@ -76,7 +91,16 @@ public class BossController : MonoBehaviour
         else
         {
             int state = Random.Range(0,2);
-            currentState = state == 0 ? BossState.LAUNCHING : BossState.SPINNING;
+            switch (state)
+            {
+                case 0: currentState = BossState.LAUNCHING;
+                    break;
+                case 1: currentState = BossState.SPINNING;
+                    break;
+                    //any other states go here
+            }
         }
+
+        spinning = false;
     }
 }
