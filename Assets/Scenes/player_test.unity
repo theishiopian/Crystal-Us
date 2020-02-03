@@ -183,7 +183,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &166368624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,8 +196,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59311bf8e2fbe0546bf6794758b89bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
+  maxHealth: 20
+  health: 20
   armor: 0
 --- !u!114 &166368625
 MonoBehaviour:
@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a3512428ba65741a580ef8bf10452c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerToHit: 
+  layerToHit: Player
   distance: 0
   knockback: 0
 --- !u!114 &166368626
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
+  movementSpeed: 2
 --- !u!114 &166368628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,12 +253,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfa27eaecac9b7448b37230816ed55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolDistance: 8
-  player: {fileID: 1602690681}
-  detectionRange: 0
-  followDistance: 0
-  startDelay: 0
-  endDelay: 0
+  patrolDistance: 4
+  player: {fileID: 0}
+  detectionRange: 5
+  followDistance: 6
+  startDelay: 0.02
+  endDelay: 0.03
   rangedPower: 0
   effects: []
 --- !u!212 &166368629
@@ -802,12 +802,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1602690681 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6462210559656193229, guid: e138bac843d5e764dac9d250f50079ad,
-    type: 3}
-  m_PrefabInstance: {fileID: 1795106327}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1795106327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1062,7 +1056,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &1836226279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1095,7 +1089,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
+  movementSpeed: 2
 --- !u!114 &1836226281
 MonoBehaviour:
   m_ObjectHideFlags: 0
