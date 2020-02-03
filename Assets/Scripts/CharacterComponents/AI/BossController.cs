@@ -10,7 +10,7 @@ public enum BossState
 }
 
 
-public class BossController : MonoBehaviour, ICharacterComponent, ICharacterController
+public class BossController : AI, ICharacterComponent, ICharacterController
 {
     public BossState currentState = BossState.MOVING;
 
