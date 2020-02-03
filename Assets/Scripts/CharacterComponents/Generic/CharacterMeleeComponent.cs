@@ -8,10 +8,13 @@ public class CharacterMeleeComponent : MonoBehaviour, ICharacterComponent
     public float knockback;
     private LayerMask mask;
     private CharacterLevelComponent level;
+    Animator animator; 
+
     void Start()
     {
         mask = LayerMask.GetMask(layerToHit);
         level = GetComponent<CharacterLevelComponent>();
+        animator = this.gameObject.GetComponent<Animator>();
     }
 
     private bool Attack(Vector2 direction, float attackPower, float distance, float knockback)
@@ -29,6 +32,9 @@ public class CharacterMeleeComponent : MonoBehaviour, ICharacterComponent
             direction.y = Mathf.Sign(y);
             direction.x = 0;
         }
+
+        animator.SetFloat("AttackHorizontal", direction.x);
+        animator.SetFloat("AttackVertical", direction.y);
 
         Vector2 position = this.gameObject.transform.position;
         RaycastHit2D hit = Physics2D.CircleCast(position,1,direction,distance,mask);
