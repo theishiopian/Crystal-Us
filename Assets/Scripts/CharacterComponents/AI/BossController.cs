@@ -59,6 +59,8 @@ public class BossController : AI, ICharacterComponent, ICharacterController
     private void Move()
     {
         Debug.Log("moving");
+
+        body.position += TargetDirection(player.transform.position) * 0.03f;
     }
 
     bool spinning = false;
