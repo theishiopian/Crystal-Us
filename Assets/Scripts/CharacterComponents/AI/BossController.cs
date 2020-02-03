@@ -9,14 +9,13 @@ public enum BossState
     MOVING
 }
 
-
 public class BossController : AI, ICharacterComponent, ICharacterController
 {
-    public BossState currentState = BossState.MOVING;
+    public GameObject[] tentacles;
 
     public GameObject player;
 
-
+    private BossState currentState = BossState.MOVING;
     private Rigidbody2D body;
 
 
