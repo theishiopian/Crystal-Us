@@ -57,7 +57,10 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (!animator.GetBool("IsAttacking"))
+        {
+            Move();
+        }
         Attack();
         Dialouge();
         //Debug.Log(attackPower);
