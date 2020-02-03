@@ -11,8 +11,12 @@ public class LevelTeleporter : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        GlobalVariables.spawnPos = destinationCoordinates;
+        //Debug.Log("It's Happening!!!" + other.gameObject.tag);
+        if (other.gameObject.tag == "Player") // Make sure the collider belongs to the player.
+        {
+            GlobalVariables.spawnPos = destinationCoordinates;
 
-        SceneManager.LoadScene(sceneTarget, LoadSceneMode.Single);
+            SceneManager.LoadScene(sceneTarget, LoadSceneMode.Single);
+        }
     }
 }
