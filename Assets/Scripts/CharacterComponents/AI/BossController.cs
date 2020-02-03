@@ -49,7 +49,7 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         t += Time.deltaTime;
         if(t >= interval)
         {
-            interval = Random.Range(3, 8);
+            
             t = 0;
             ChangeState();
         }
@@ -77,31 +77,51 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         }
     }
 
-    private void Launch()
-    {
-        Debug.Log("launching");
-    }
-
     private void ChangeState()
     {
         body.velocity = Vector2.zero;
-        if(currentState != BossState.MOVING)
+        if (currentState != BossState.MOVING)
         {
             currentState = BossState.MOVING;
         }
         else
         {
-            int state = Random.Range(0,2);
+            int state = Random.Range(0, 2);
             switch (state)
             {
-                case 0: currentState = BossState.LAUNCHING;
+                case 0:
+                    currentState = BossState.LAUNCHING;
+                    interval = 3;
                     break;
-                case 1: currentState = BossState.SPINNING;
+                case 1:
+                    currentState = BossState.SPINNING;
+                    interval = Random.Range(3, 6);
                     break;
                     //any other states go here
             }
         }
 
         spinning = false;
+    }
+
+    private void Launch()
+    {
+        Debug.Log("launching");
+
+        //launch tentacles until move
+    }
+
+    IEnumerator TentacleBarrage()
+    {
+
+
+        for(int i = 0; i != 5; i++)
+        {
+
+
+            yield return new WaitForSeconds(0.6f);
+        }
+
+        yield return null;
     }
 }
