@@ -19123,6 +19123,56 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 506521707163455390, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521707163455390, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521707207986009, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521707207986009, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521707266857687, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521707266857687, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521707266857687, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521708682613474, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521708682613474, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 506521708682613474, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6462210559656193229, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
       propertyPath: m_Name

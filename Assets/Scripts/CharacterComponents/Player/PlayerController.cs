@@ -13,13 +13,34 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
 
     void Awake()
     {
+        DontDestroyOnLoad(this.gameObject);
         GlobalVariables.globalObjects["player"] = this.gameObject;
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Player");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance && curDistance != 0)
+            {
+                closest = go;
+                distance = curDistance;
+                Destroy(go);
+                break;
+            }
+
+        }
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
         this.transform.position = GlobalVariables.spawnPos;
+        GlobalVariables.globalObjects["player"] = this.gameObject;
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
         meleeAttack = this.gameObject.GetComponent<CharacterMeleeComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
