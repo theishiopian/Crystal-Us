@@ -14,7 +14,15 @@ public class CharacterLevelComponent : MonoBehaviour, ICharacterComponent
     private void Start()
     {
         EventManager.StartListening("enemy_death", EnemyDeath);
-        isPlayer = this.gameObject.CompareTag("Player");
+        isPlayer = this.gameObject.CompareTag("Player");    
+    }
+
+    void Awake()
+    {
+        //get values on scene transition (need to add HP/MP/etc)
+        XP = PlayerPrefs.GetInt("experience");
+        level = PlayerPrefs.GetInt("level");
+        levelUp = PlayerPrefs.GetInt("nextlevel");
     }
 
     void EnemyDeath()
@@ -41,6 +49,12 @@ public class CharacterLevelComponent : MonoBehaviour, ICharacterComponent
                 levelUp *= 2;
                 
             }
+            
+            //store values whenever XP is gained
+            PlayerPrefs.SetInt("experience", XP);
+            PlayerPrefs.SetInt("level", level);
+            PlayerPrefs.SetInt("nextlevel", levelUp);
+
         }
         else
         {

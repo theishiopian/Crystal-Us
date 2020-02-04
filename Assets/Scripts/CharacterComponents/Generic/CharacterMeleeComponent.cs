@@ -8,10 +8,13 @@ public class CharacterMeleeComponent : MonoBehaviour, ICharacterComponent
     public float knockback;
     private LayerMask mask;
     private CharacterLevelComponent level;
+    Animator animator; 
+
     void Start()
     {
         mask = LayerMask.GetMask(layerToHit);
         level = GetComponent<CharacterLevelComponent>();
+        animator = this.gameObject.GetComponent<Animator>();
     }
 
     private bool Attack(Vector2 direction, float attackPower, float distance, float knockback)
@@ -43,7 +46,8 @@ public class CharacterMeleeComponent : MonoBehaviour, ICharacterComponent
         {
             //add debug code here if needed
         }
-        if(hit && health != null)
+
+        if (hit && health != null)
         {
             health.Damage(Mathf.CeilToInt(attackPower));
             body = health.gameObject.GetComponent<Rigidbody2D>();
