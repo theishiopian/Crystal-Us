@@ -9,14 +9,26 @@ AnimatorController:
   m_Name: GelatinousCube
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: HorizontalMovement
+  - m_Name: MovementHorizontal
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: VerticalMovement
+  - m_Name: MovementVertical
     m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: IsDamaged
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: IsAttacking
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -43,13 +55,13 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: VerticalMovement
+    m_ConditionEvent: MovementVertical
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: HorizontalMovement
+    m_ConditionEvent: MovementHorizontal
     m_EventTreshold: -0.01
   - m_ConditionMode: 4
-    m_ConditionEvent: HorizontalMovement
+    m_ConditionEvent: MovementHorizontal
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102409545556163110}
@@ -74,13 +86,13 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: HorizontalMovement
+    m_ConditionEvent: MovementHorizontal
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: VerticalMovement
+    m_ConditionEvent: MovementVertical
     m_EventTreshold: -0.01
   - m_ConditionMode: 4
-    m_ConditionEvent: VerticalMovement
+    m_ConditionEvent: MovementVertical
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102931044006852494}
@@ -105,13 +117,13 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: HorizontalMovement
+    m_ConditionEvent: MovementHorizontal
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: VerticalMovement
+    m_ConditionEvent: MovementVertical
     m_EventTreshold: -0.01
   - m_ConditionMode: 4
-    m_ConditionEvent: VerticalMovement
+    m_ConditionEvent: MovementVertical
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102967113722011698}
@@ -136,13 +148,13 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: VerticalMovement
+    m_ConditionEvent: MovementVertical
     m_EventTreshold: 0
   - m_ConditionMode: 3
-    m_ConditionEvent: HorizontalMovement
+    m_ConditionEvent: MovementHorizontal
     m_EventTreshold: -0.01
   - m_ConditionMode: 4
-    m_ConditionEvent: HorizontalMovement
+    m_ConditionEvent: MovementHorizontal
     m_EventTreshold: 0.01
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102291241501233446}
