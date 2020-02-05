@@ -6,11 +6,11 @@ using Random = UnityEngine.Random;
 public class SpawnScript : MonoBehaviour
 {
     [SerializeField]
-        int leftUnits, rightUnits, upUnits, downUnits;
+        float leftUnits = 0, rightUnits = 0, upUnits = 0, downUnits = 0;
     [SerializeField]
-        GameObject enemy;
+        GameObject enemy = null;
     private float distanceToPlayer;
-    //private GameObject enemySpawn;
+
     
 
     void Start()
@@ -21,18 +21,11 @@ public class SpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distanceToPlayer = Vector3.Distance(GameObject.Find("Player").transform.position, transform.position);
-        /*switch(enemy)
+        distanceToPlayer = Vector2.Distance(GameObject.Find("Player").transform.position, transform.position);
+        Vector2 position = new Vector2(Random.Range(leftUnits * -1, rightUnits), Random.Range(downUnits * -1, upUnits));
+        if(transform.childCount == 0 && distanceToPlayer > 5)
         {
-            case 0: enemySpawn = GameObject.Find("GelatinousCube");
-                break;
-            case 1: enemySpawn = GameObject.Find("Flumph");
-                break;
-            case 2: enemySpawn = GameObject.Find("DragonTurtle");
-                break;
-            case 3: enemySpawn = GameObject.Find("RockGolem");
-                break;
-        }*/
-
+            GameObject spawnedEnemy = Instantiate(enemy, gameObject.transform);
+        }
     }
 }

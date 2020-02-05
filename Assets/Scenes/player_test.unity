@@ -1038,6 +1038,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemySpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1857124073378664965, guid: fa627a4c07f6a0142b438eb62a8b4022,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857124073378664966, guid: fa627a4c07f6a0142b438eb62a8b4022,
+        type: 3}
+      propertyPath: leftUnits
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857124073378664966, guid: fa627a4c07f6a0142b438eb62a8b4022,
+        type: 3}
+      propertyPath: rightUnits
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857124073378664966, guid: fa627a4c07f6a0142b438eb62a8b4022,
+        type: 3}
+      propertyPath: upUnits
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1857124073378664966, guid: fa627a4c07f6a0142b438eb62a8b4022,
+        type: 3}
+      propertyPath: downUnits
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa627a4c07f6a0142b438eb62a8b4022, type: 3}
 --- !u!1001 &1979356936819970768
@@ -1106,6 +1131,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GelatinousCube
+      objectReference: {fileID: 0}
+    - target: {fileID: 1979356936691681213, guid: efcbf893888952e46a62fcca53b3db2f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efcbf893888952e46a62fcca53b3db2f, type: 3}
