@@ -23,7 +23,7 @@ public class SpawnScript : MonoBehaviour
     {
         distanceToPlayer = Vector2.Distance(GameObject.Find("Player").transform.position, transform.position);
         Vector2 position = new Vector2(Random.Range(leftUnits * -1, rightUnits), Random.Range(downUnits * -1, upUnits));
-        if(transform.childCount == 0 && distanceToPlayer > 5)
+        if(transform.childCount == 0 && distanceToPlayer > 30)
         {
             GameObject spawnedEnemy = Instantiate(enemy, gameObject.transform);
         }
