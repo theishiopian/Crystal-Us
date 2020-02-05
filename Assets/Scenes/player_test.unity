@@ -614,21 +614,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 506521708433200475, guid: e138bac843d5e764dac9d250f50079ad,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 506521708433200475, guid: e138bac843d5e764dac9d250f50079ad,
-        type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 506521708433200475, guid: e138bac843d5e764dac9d250f50079ad,
-        type: 3}
-      propertyPath: m_AutoTiling
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 506521708682613474, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -683,11 +668,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6462210559656193235, guid: e138bac843d5e764dac9d250f50079ad,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6462210559656193235, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
