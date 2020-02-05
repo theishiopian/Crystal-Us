@@ -31,7 +31,7 @@ public class BulletController : MonoBehaviour
             CharacterHealthComponent health = collision.gameObject.GetComponent<CharacterHealthComponent>();
 
             health.Damage(damage);
-
+            
             if(knockback>0)
             {
                 Rigidbody2D otherBody = collision.gameObject.GetComponent<Rigidbody2D>();

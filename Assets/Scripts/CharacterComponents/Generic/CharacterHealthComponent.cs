@@ -23,7 +23,7 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
     public void Damage(int amount)
     {
         health -= (int)Mathf.Clamp(amount-armor, 1,Mathf.Infinity);
-
+        
         Object cache;
         GlobalVariables.globalObjects.TryGetValue("last_enemy", out cache);
         if (cache is GameObject && cache != null)
