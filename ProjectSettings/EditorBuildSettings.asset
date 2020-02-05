@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/dungeon2.unity
     guid: 8899e2617ee89514ba77b45157450297
+  - enabled: 1
+    path: Assets/Scenes/plain 2.unity
+    guid: e9348492b36b7ec4eb9b7674c62483db
   m_configObjects: {}

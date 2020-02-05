@@ -112,6 +112,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &335455601
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 335455602}
+  m_Layer: 0
+  m_Name: to dungeon 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &335455602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335455601}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &157533176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,22 +227,22 @@ PrefabInstance:
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: sceneTarget
-      value: dungeon1
+      value: dungeon2
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: destinationCoordinates.x
-      value: -16.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: destinationCoordinates.y
-      value: -39
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274889, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: m_Name
-      value: LevelTeleporter-dungeon1
+      value: LevelTeleporter-dungeon2
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274891, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
@@ -346,12 +376,12 @@ PrefabInstance:
     - target: {fileID: 6462210559656193235, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -21.35779
+      value: 1.09
       objectReference: {fileID: 0}
     - target: {fileID: 6462210559656193235, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.801419
+      value: 18.71
       objectReference: {fileID: 0}
     - target: {fileID: 6462210559656193235, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
@@ -425,6 +455,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e138bac843d5e764dac9d250f50079ad, type: 3}
+--- !u!1 &730374809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 730374810}
+  m_Layer: 0
+  m_Name: to plains1
+  m_TagString: Untagged
+  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &730374810
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730374809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -31.8, y: -22.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &523403299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16310,6 +16370,36 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1139637800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1139637801}
+  m_Layer: 0
+  m_Name: is this where gate 2 goes?
+  m_TagString: Untagged
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1139637801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139637800}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: 27.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1124002652
 PrefabInstance:
   m_ObjectHideFlags: 0
