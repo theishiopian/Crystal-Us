@@ -18,13 +18,13 @@ GameObject:
   - component: {fileID: 1979356936691681215}
   - component: {fileID: 1979356936691681214}
   - component: {fileID: 1979356936691681191}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GelatinousCube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1979356936691681190
 Transform:
   m_ObjectHideFlags: 0

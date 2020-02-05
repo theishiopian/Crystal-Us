@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 183284534}
   m_Layer: 10
   m_Name: DragonTurtle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -347,9 +347,9 @@ GameObject:
   - component: {fileID: 760708782}
   - component: {fileID: 760708781}
   - component: {fileID: 760708780}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flumph
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -689,6 +689,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6462210559656193243, guid: e138bac843d5e764dac9d250f50079ad,
+        type: 3}
+      propertyPath: level
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6462210560561005845, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -739,9 +744,9 @@ GameObject:
   - component: {fileID: 1836226278}
   - component: {fileID: 1836226277}
   - component: {fileID: 1836226276}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RockGolem
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1021,7 +1026,7 @@ PrefabInstance:
     - target: {fileID: 1857124073378664965, guid: fa627a4c07f6a0142b438eb62a8b4022,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1857124073378664966, guid: fa627a4c07f6a0142b438eb62a8b4022,
         type: 3}
@@ -1115,7 +1120,7 @@ PrefabInstance:
     - target: {fileID: 1979356936691681213, guid: efcbf893888952e46a62fcca53b3db2f,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efcbf893888952e46a62fcca53b3db2f, type: 3}
