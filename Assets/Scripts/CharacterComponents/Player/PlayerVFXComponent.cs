@@ -11,7 +11,10 @@ public class PlayerVFXComponent : MonoBehaviour, ICharacterComponent
 
     public void InitAttack(float attackPower)
     {
-        if (!chargingEffect.isPlaying && attackPower == 0) chargingEffect.Play();
+        if (!chargingEffect.isPlaying && attackPower == 0)
+        {
+            StartCoroutine("playChargeEffectAfterDelay", attackPower);
+        }
     }
 
     public void ResetAttack()
@@ -21,6 +24,7 @@ public class PlayerVFXComponent : MonoBehaviour, ICharacterComponent
 
     public void SetAttackLevel(float attackPower)
     {
+        //Debug.Log(attackPower);
         if (attackPower >= 2)
         {
             chargeLevel2.SetActive(true);
@@ -38,5 +42,17 @@ public class PlayerVFXComponent : MonoBehaviour, ICharacterComponent
             chargeLevel1.SetActive(false);
             chargeLevel2.SetActive(false);
         }
+    }
+
+    IEnumerator playChargeEffectAfterDelay(float attackPower)
+    {
+
+        yield return new WaitForSeconds(0.2f);
+
+        if(Input.GetMouseButton(0))//dirty hack
+        {
+            chargingEffect.Play();
+        }
+        yield return null;
     }
 }
