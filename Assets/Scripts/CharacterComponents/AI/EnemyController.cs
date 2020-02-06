@@ -64,7 +64,6 @@ public class EnemyController : AI, ICharacterComponent, ICharacterController
         if(!isAttacking)
         {
             animator.SetBool("IsAttacking", false);
-            animator.SetBool("IsDamaged", false);
             if (following)
             {
                 Debug.DrawLine(this.transform.position, player.transform.position, Color.red);
