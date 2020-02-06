@@ -425,7 +425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 335455602}
   m_Layer: 0
-  m_Name: to dungeon 2
+  m_Name: to dungeon_sword_upgrade
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -455,7 +455,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: sceneTarget
-      value: dungeon2
+      value: dungeon_sword_upgrade
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
@@ -693,7 +693,7 @@ GameObject:
   m_Component:
   - component: {fileID: 730374810}
   m_Layer: 0
-  m_Name: to plains1
+  m_Name: to water_plains
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -16963,7 +16963,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: sceneTarget
-      value: Plains1
+      value: water_plains
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}

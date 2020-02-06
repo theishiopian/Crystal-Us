@@ -23613,7 +23613,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: sceneTarget
-      value: Plains1
+      value: water_plains
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
