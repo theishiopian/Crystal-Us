@@ -6,9 +6,9 @@ using Random = UnityEngine.Random;
 public class SpawnScript : MonoBehaviour
 {
     [SerializeField]
-        float leftUnits = 0, rightUnits = 0, upUnits = 0, downUnits = 0;
-    [SerializeField]
-        GameObject enemy;
+        float leftUnits = 0, rightUnits = 0, upUnits = 0, downUnits = 0;//what are these for?
+
+    public GameObject enemy;
     private float distanceToPlayer;
 
     

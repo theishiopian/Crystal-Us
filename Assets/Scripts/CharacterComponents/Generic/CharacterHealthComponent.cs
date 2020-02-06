@@ -44,7 +44,8 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
             }
             else
             {
-                GlobalVariables.globalObjects.Add("last_enemy", this.gameObject);
+                //GlobalVariables.globalObjects.Add("last_enemy", this.gameObject);
+                GlobalVariables.globalObjects["last_enemy"] = this.gameObject;
                 EventManager.TriggerEvent("enemy_death");
                 Die();
             }
