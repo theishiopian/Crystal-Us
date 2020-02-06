@@ -22,10 +22,11 @@ public class SpawnScript : MonoBehaviour
     void Update()
     {
         distanceToPlayer = Vector2.Distance(GameObject.Find("Player").transform.position, transform.position);
-        Vector2 position = new Vector2(Random.Range(leftUnits * -1, rightUnits), Random.Range(downUnits * -1, upUnits));
+        
         if(transform.childCount == 0 && distanceToPlayer > 30)
         {
-            GameObject spawnedEnemy = Instantiate(enemy, gameObject.transform);
+            Vector2 spawnLoc = new Vector2(gameObject.transform.position.x + Random.Range(leftUnits * -1, rightUnits), gameObject.transform.position.y + Random.Range(downUnits * -1, upUnits));
+            GameObject spawnedEnemy = Instantiate(enemy, spawnLoc, Quaternion.identity, gameObject.transform);
         }
     }
 }
