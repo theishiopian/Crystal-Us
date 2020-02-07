@@ -569,6 +569,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DragonTurtle
       objectReference: {fileID: 0}
+    - target: {fileID: 7520133403746210658, guid: 8d246bace67d48d42a0e5370a727d9d7,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300016, guid: 0f1dfc29eea48834188c48eb54fbe70e,
+        type: 3}
     - target: {fileID: 7520133403746210685, guid: 8d246bace67d48d42a0e5370a727d9d7,
         type: 3}
       propertyPath: m_LocalPosition.x

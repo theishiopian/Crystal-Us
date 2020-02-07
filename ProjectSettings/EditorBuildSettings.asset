@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/town.unity
     guid: 2b5dcdf5685883b42b111863ca008281
   - enabled: 1
-    path: Assets/Scenes/plains_piss_pools.unity
+    path: Assets/Scenes/Temporary/plains_piss_pools.unity
     guid: cba80a955a162984186bc2aea03509dd
   - enabled: 1
     path: Assets/Scenes/plains_water.unity
