@@ -1,23 +1,19 @@
 fileFormatVersion: 2
-guid: 0f1dfc29eea48834188c48eb54fbe70e
+guid: 4f7a104b96ddb924582fa5e544bc85a6
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Enemy_Dragon_Turtle_Sprites_0
-    21300002: Enemy_Dragon_Turtle_Sprites_1
-    21300004: Enemy_Dragon_Turtle_Sprites_2
-    21300006: Enemy_Dragon_Turtle_Sprites_3
-    21300008: Enemy_Dragon_Turtle_Sprites_4
-    21300010: Enemy_Dragon_Turtle_Sprites_5
-    21300012: Enemy_Dragon_Turtle_Sprites_6
-    21300014: Enemy_Dragon_Turtle_Sprites_7
-    21300016: Enemy_Dragon_Turtle_Sprites_8
-    21300018: Enemy_Dragon_Turtle_Sprites_9
-    21300020: Enemy_Dragon_Turtle_Sprites_10
-    21300022: Enemy_Dragon_Turtle_Sprites_11
-    21300024: Enemy_Dragon_Turtle_Sprites_12
-    21300026: Enemy_Dragon_Turtle_Sprites_13
-    21300028: Enemy_Dragon_Turtle_Sprites_14
-    21300030: Enemy_Dragon_Turtle_Sprites_15
+    21300000: FlumphSpriteSheet_0
+    21300002: FlumphSpriteSheet_1
+    21300004: FlumphSpriteSheet_2
+    21300006: FlumphSpriteSheet_3
+    21300008: FlumphSpriteSheet_4
+    21300010: FlumphSpriteSheet_5
+    21300012: FlumphSpriteSheet_6
+    21300014: FlumphSpriteSheet_7
+    21300016: FlumphSpriteSheet_8
+    21300018: FlumphSpriteSheet_9
+    21300020: FlumphSpriteSheet_10
+    21300022: FlumphSpriteSheet_11
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -122,7 +118,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_0
+      name: FlumphSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -136,13 +132,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3078967e96d96214591b0c34a13d1d8b
+      spriteID: bf1e464d9e96be140a425669bb6c15f8
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_1
+      name: FlumphSpriteSheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -156,13 +152,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d183ab340001c640944bd8551c82c8f
+      spriteID: 5e1f66e83ba56994893145edaed08415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_2
+      name: FlumphSpriteSheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -176,33 +172,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cbbdbfdbc18d33a41b7a89026af34b7a
+      spriteID: d9e2d04ee49627f4993ad0d0bdf4ec35
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 192
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d18b2e8453dd6dc4599cd18eea082112
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_4
+      name: FlumphSpriteSheet_3
       rect:
         serializedVersion: 2
         x: 0
@@ -216,13 +192,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 410652a2cecb0724aa43c1879fa4442b
+      spriteID: 686b3eb0ed3c9df439fbf3ec07bb97a0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_5
+      name: FlumphSpriteSheet_4
       rect:
         serializedVersion: 2
         x: 32
@@ -236,13 +212,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e2792f217bfb13438461b350f185bc2
+      spriteID: 7ac41dbc9cdfab542b3d0fe90dcf8b7e
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_6
+      name: FlumphSpriteSheet_5
       rect:
         serializedVersion: 2
         x: 64
@@ -256,33 +232,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 159ec13f1b1102e42aca188d761f9644
+      spriteID: 167e613e9e3072d469915aa1440a0211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_7
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 128
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f53bd228b35f2864db81a2aa897bc820
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_8
+      name: FlumphSpriteSheet_6
       rect:
         serializedVersion: 2
         x: 0
@@ -296,13 +252,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ac65ca0ecc7b92145a98fa115a7a1c72
+      spriteID: 888a7c91c10fc264686f0933d8572b95
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_9
+      name: FlumphSpriteSheet_7
       rect:
         serializedVersion: 2
         x: 32
@@ -316,13 +272,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11e9ef70b6250ab4d8b5c07db076daeb
+      spriteID: 067c68585b02d6149b2c6af31a98d2de
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_10
+      name: FlumphSpriteSheet_8
       rect:
         serializedVersion: 2
         x: 64
@@ -336,33 +292,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cec97073ebe8b3640bf8d31e5b922668
+      spriteID: d973ec15301578c48a5c790295d478ef
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 64
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d24339e0ba31036418a666f530ad2313
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_12
+      name: FlumphSpriteSheet_9
       rect:
         serializedVersion: 2
         x: 0
@@ -376,13 +312,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 800f964b0a6ea6b41a9baa32b0150d0d
+      spriteID: 42755e0ed13ce23408018e6f09397a73
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_13
+      name: FlumphSpriteSheet_10
       rect:
         serializedVersion: 2
         x: 32
@@ -396,13 +332,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1dc23d44669a2ab4d9a079734ddffb4c
+      spriteID: 301a6da6c27e1124984f82945164ebce
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_14
+      name: FlumphSpriteSheet_11
       rect:
         serializedVersion: 2
         x: 64
@@ -416,27 +352,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e50ff00c87bf0b4e87bf4a9bbbfe73f
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_Dragon_Turtle_Sprites_15
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e77a1f182111444694173d67a6b3791
+      spriteID: f10fbe1d3b93e164e902998b03790611
       vertices: []
       indices: 
       edges: []
@@ -444,7 +360,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 867f830a60bffa04eb24e2c1cf90a41d
+    spriteID: 1d399c2db02ac264cb7d3fd415a429c9
     vertices: []
     indices: 
     edges: []

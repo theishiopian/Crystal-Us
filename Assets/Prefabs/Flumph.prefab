@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8967488976425148287}
   - component: {fileID: 8967488976425148284}
   - component: {fileID: 8967488976425148285}
+  - component: {fileID: 8967488977017381331}
   m_Layer: 10
   m_Name: Flumph
   m_TagString: Enemy
@@ -73,15 +74,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300014, guid: 4f7a104b96ddb924582fa5e544bc85a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &8967488976425148257
@@ -96,8 +97,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59311bf8e2fbe0546bf6794758b89bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  health: 0
+  maxHealth: 20
+  health: 20
   armor: 0
 --- !u!114 &8967488976425148286
 MonoBehaviour:
@@ -126,8 +127,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerToHit: 
-  distance: 0
-  knockback: 0
+  distance: 1.5
+  knockback: 2
 --- !u!114 &8967488976425148284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 0
+  movementSpeed: 2
 --- !u!114 &8967488976425148285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,11 +154,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dfa27eaecac9b7448b37230816ed55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolDistance: 8
+  patrolDistance: 4
   player: {fileID: 0}
-  detectionRange: 0
-  followDistance: 0
-  startDelay: 0
-  endDelay: 0
+  detectionRange: 5
+  followDistance: 6
+  startDelay: 0.2
+  endDelay: 0.3
   rangedPower: 0
   effects: []
+--- !u!95 &8967488977017381331
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8967488976425148282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 33e1686b68e69c743b46ec1373354a22, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
