@@ -106,7 +106,7 @@ public class EnemyController : AI, ICharacterComponent, ICharacterController
             // Move
             float enemyX = moveDirection.x;
             float enemyY = moveDirection.y;
-            Debug.Log(enemyX);
+
             if(Mathf.Abs(enemyX) > 0f && Mathf.Abs(enemyX) <= 1f)
             {
                 enemyX = 1f * Mathf.Sign(enemyX);

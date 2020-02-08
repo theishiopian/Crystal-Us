@@ -15,4 +15,15 @@ public class Necklace : MonoBehaviour
     {
         
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log(other);
+        PlayerHUDComponent HUD = other.GetComponent<PlayerHUDComponent>();
+        if (HUD == null)
+            return; 
+        Debug.Log("hello");
+        HUD.getNecklace();
+        Destroy(gameObject);
+    }
 }
