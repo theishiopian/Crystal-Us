@@ -19496,6 +19496,10 @@ GameObject:
   - component: {fileID: 735312246}
   - component: {fileID: 735312245}
   - component: {fileID: 735312248}
+  - component: {fileID: 735312252}
+  - component: {fileID: 735312251}
+  - component: {fileID: 735312250}
+  - component: {fileID: 735312249}
   m_Layer: 0
   m_Name: NoiseNPC
   m_TagString: Untagged
@@ -19516,8 +19520,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - I heard a strange noise to the west, across the river.
-  - It's a good thing you're here!
+  - "I heard a scary sound from across the river when I was fishing\u2026 It\u2019s
+    a good thing that it\u2019s out there and we\u2019re in here\u2026"
 --- !u!212 &735312246
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -19607,6 +19611,73 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2307949}
   m_EdgeRadius: 0
+--- !u!50 &735312249
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735312244}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &735312250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735312244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df004dd006442294ca2e7c342d512bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolDistance: 8
+  player: {fileID: 0}
+--- !u!114 &735312251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735312244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 0.5
+--- !u!95 &735312252
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735312244}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85425841e0d68214fbdcde898f27e7ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &806315915
 GameObject:
   m_ObjectHideFlags: 0
@@ -19843,8 +19914,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -19881,7 +19952,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 5.995861, y: 0, z: 5.9320755, w: 3.5712454}
+  m_margin: {x: 3.7423897, y: 0, z: 3.7411995, w: 3.5712454}
   m_textInfo:
     textComponent: {fileID: 837029514}
     characterCount: 0
@@ -20257,8 +20328,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -20295,7 +20366,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 6.4375153, y: 0, z: 5.9276114, w: 3.3143616}
+  m_margin: {x: 4.1214504, y: 0, z: 4.112314, w: 3.3143616}
   m_textInfo:
     textComponent: {fileID: 908205669}
     characterCount: 0
@@ -20386,6 +20457,9 @@ GameObject:
   - component: {fileID: 943493976}
   - component: {fileID: 943493975}
   - component: {fileID: 943493978}
+  - component: {fileID: 943493981}
+  - component: {fileID: 943493980}
+  - component: {fileID: 943493979}
   m_Layer: 0
   m_Name: NecklaceNPC_Found
   m_TagString: Untagged
@@ -20406,8 +20480,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - Oh, thank you for finding my necklace!
-  - Please, take this key to the ruins to the north!
+  - Oh, my necklace!! Here, you can have this lame family heirloom as thanks!
 --- !u!212 &943493976
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -20497,6 +20570,54 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.1076736}
   m_EdgeRadius: 0
+--- !u!50 &943493979
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943493974}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &943493980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943493974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df004dd006442294ca2e7c342d512bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolDistance: 8
+  player: {fileID: 0}
+--- !u!114 &943493981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943493974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 0.5
 --- !u!1 &987350596
 GameObject:
   m_ObjectHideFlags: 0
@@ -20639,8 +20760,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -24559,8 +24680,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -24691,6 +24812,7 @@ GameObject:
   - component: {fileID: 1854708634}
   - component: {fileID: 1854708635}
   - component: {fileID: 1854708636}
+  - component: {fileID: 1854708637}
   m_Layer: 0
   m_Name: NecklaceNPC_Lost
   m_TagString: Untagged
@@ -24711,8 +24833,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - Help me, I lost a family heirloom!
-  - I would be willing to reward whomever finds it!
+  - I lost my favorite necklace in the dungeon! Now all I have is dumb heirloom gate
+    key.
 --- !u!212 &1854708631
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24841,7 +24963,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 20
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -24850,6 +24972,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!95 &1854708637
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854708629}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad196f97b28d56645bafad6b07481d46, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1889970304
 GameObject:
   m_ObjectHideFlags: 0
@@ -24988,6 +25129,10 @@ GameObject:
   - component: {fileID: 2011912628}
   - component: {fileID: 2011912627}
   - component: {fileID: 2011912630}
+  - component: {fileID: 2011912634}
+  - component: {fileID: 2011912633}
+  - component: {fileID: 2011912632}
+  - component: {fileID: 2011912631}
   m_Layer: 0
   m_Name: RiverNPC
   m_TagString: Untagged
@@ -25008,7 +25153,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - It's impossible to cross the river to the west.
+  - "It\u2019s impossible to cross the river to the west, even with a boat. I heard
+    there\u2019s a dungeon that exists on the other side but it\u2019s blocked by
+    a wall."
 --- !u!212 &2011912628
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25098,6 +25245,73 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.1025944}
   m_EdgeRadius: 0
+--- !u!50 &2011912631
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011912626}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &2011912632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011912626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df004dd006442294ca2e7c342d512bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolDistance: 8
+  player: {fileID: 0}
+--- !u!114 &2011912633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011912626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 0.5
+--- !u!95 &2011912634
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011912626}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85425841e0d68214fbdcde898f27e7ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2018224185
 GameObject:
   m_ObjectHideFlags: 0
@@ -25154,6 +25368,10 @@ GameObject:
   - component: {fileID: 2083332478}
   - component: {fileID: 2083332477}
   - component: {fileID: 2083332480}
+  - component: {fileID: 2083332484}
+  - component: {fileID: 2083332483}
+  - component: {fileID: 2083332482}
+  - component: {fileID: 2083332481}
   m_Layer: 0
   m_Name: DoorsNPC
   m_TagString: Untagged
@@ -25174,7 +25392,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lines:
-  - Nobody has ever opened the doors to the north.
+  - "Nobody has gone through the northern gate in generations. The key is guarded
+    by one of the families in town as an heirloom and they won\u2019t let anyone use
+    it."
 --- !u!212 &2083332478
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -25264,6 +25484,73 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0147724}
   m_EdgeRadius: 0
+--- !u!50 &2083332481
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083332476}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 50
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
+--- !u!114 &2083332482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083332476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df004dd006442294ca2e7c342d512bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolDistance: 8
+  player: {fileID: 0}
+--- !u!114 &2083332483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083332476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 0.5
+--- !u!95 &2083332484
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083332476}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 85425841e0d68214fbdcde898f27e7ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2127337467
 GameObject:
   m_ObjectHideFlags: 0
@@ -25300,7 +25587,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.13, y: 0.56}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2127337469
@@ -25349,8 +25636,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -25387,7 +25674,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 4.589121, y: 0, z: 4.6553764, w: 3.059411}
+  m_margin: {x: 3.7127724, y: 0, z: 3.6538334, w: 3.059411}
   m_textInfo:
     textComponent: {fileID: 2127337469}
     characterCount: 0

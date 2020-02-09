@@ -15,7 +15,7 @@ public class NPCController : AI, ICharacterComponent, ICharacterController
     private float moveNext = 3f;             // While patroling, how long until the next movement
     private Vector2 moveDirection;      // Move direction
 
-    //private Animator animator;          //animator component
+    private Animator animator;          //animator component
 
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class NPCController : AI, ICharacterComponent, ICharacterController
         renderer = GetComponent<SpriteRenderer>();
         patrolPoint = transform.position;
         moveDirection = RandomDirection();
-        //animator = this.gameObject.GetComponent<Animator>();
+        animator = this.gameObject.GetComponent<Animator>();
 
         if (player == null)
         {
@@ -65,7 +65,7 @@ public class NPCController : AI, ICharacterComponent, ICharacterController
 
 
         // Move
-        /*float npcX = moveDirection.x;
+        float npcX = moveDirection.x;
         float npcY = moveDirection.y;
 
         if (Mathf.Abs(npcX) > 0f && Mathf.Abs(npcX) <= 1f)
@@ -79,7 +79,7 @@ public class NPCController : AI, ICharacterComponent, ICharacterController
             npcY = 1f * Mathf.Sign(npcY);
             animator.SetFloat("MovementVertical", npcY);
         }
-        else animator.SetFloat("MovementVertical", 0f);*/
+        else animator.SetFloat("MovementVertical", 0f);
 
         controller.Move(moveDirection);
     }
