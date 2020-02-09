@@ -57,19 +57,18 @@ public class BossController : AI, ICharacterComponent, ICharacterController
 
     private void Move()
     {
-        Debug.Log("moving");
-
-        body.position += TargetDirection(player.transform.position) * 0.03f;
+        body.position += TargetDirection(player.transform.position) * 1.8f * Time.deltaTime;  //fixed so the movement isn't tied to the script's refresh speed
     }
 
     bool spinning = false;
 
     private void Spin()
     {
-        Debug.Log("spinning");
         if(!spinning)
         {
-            Vector2 dir = Random.insideUnitCircle.normalized * 10;
+            body.drag = 0f;
+
+            Vector2 dir = Quaternion.Euler(0,0, 45 + Random.Range(0,4) * 90) * Vector2.up * 10; //45 degree angles
 
             body.AddForce(dir, ForceMode2D.Impulse);
 
@@ -91,7 +90,7 @@ public class BossController : AI, ICharacterComponent, ICharacterController
             {
                 case 0:
                     currentState = BossState.LAUNCHING;
-                    interval = 3;
+                    interval = 6;
                     break;
                 case 1:
                     currentState = BossState.SPINNING;
@@ -102,23 +101,33 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         }
 
         spinning = false;
+        body.drag = 20f;
+        launching = false;
     }
+
+    bool launching = false;
 
     private void Launch()
     {
-        Debug.Log("launching");
-
         //launch tentacles until move
+        if (!launching)
+        {
+            StartCoroutine(TentacleBarrage());
+            launching = true;
+        }
+        if (t <= 4.05f)                     //The latest time for all the tentacles to return
+        {
+            body.velocity = Vector2.zero;   //Stop motion in order to not mess up tentacle animations
+        }
     }
 
     IEnumerator TentacleBarrage()
     {
-
-
-        for(int i = 0; i != 5; i++)
+        for(int i = 0; i != 4; i++)
         {
-
-
+            //launch them tentacles my guy ;D
+            tentacles[i].SetActive(true);
+            tentacles[i].GetComponent<BossTentacle>().SetDestination(player.transform.position);
             yield return new WaitForSeconds(0.6f);
         }
 
