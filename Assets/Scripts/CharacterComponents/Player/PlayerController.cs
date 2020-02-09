@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     private PlayerVFXComponent vfx;
     private Animator animator;
     private CharacterRangedComponent rangedAttack;
+    private CharacterHealthComponent health;
 
     void Awake()
     {
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         animator = this.gameObject.GetComponent<Animator>();
         animator.SetFloat("AnimSpeed", 1.0f);
         rangedAttack = GetComponent<CharacterRangedComponent>();
+        health = GetComponent<CharacterHealthComponent>();
     }
 
     //will move to reference class if neccesary
@@ -177,7 +179,17 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
                     }
                 }
             }
-            if (npc != null)
+            if (npc.name == "NecklaceNPC_Found")
+            {
+                npc.PrintDialouge();
+                hud.getKey();
+            }
+            else if (npc.name == "HealNPC")
+            {
+                npc.PrintDialouge();
+                health.health = health.maxHealth;
+            }
+            else if (npc != null)
             {
                 npc.PrintDialouge();
             }

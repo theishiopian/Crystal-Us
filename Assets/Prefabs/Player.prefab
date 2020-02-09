@@ -15631,6 +15631,10 @@ MonoBehaviour:
   HPBar: {fileID: 6462210560327104412}
   XPBar: {fileID: 6462210559883836452}
   levelText: {fileID: 6462210559807157522}
+  hasNecklace: 0
+  hasKey: 0
+  necklace: {fileID: 1430992934}
+  key: {fileID: 1167187222}
 --- !u!114 &6462210559656193241
 MonoBehaviour:
   m_ObjectHideFlags: 0
