@@ -16,8 +16,8 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
     private CharacterHealthComponent health;
     private CharacterLevelComponent level;
 
-    private bool hasNecklace;
-    private bool hasKey;
+    public bool hasNecklace;
+    public bool hasKey;
     public GameObject necklace;
     public GameObject key;
 
@@ -141,6 +141,8 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
 
     public void getKey()
     {
+        hasNecklace = false;
+        necklace.SetActive(false);
         hasKey = true;
         key.SetActive(true);
     }
