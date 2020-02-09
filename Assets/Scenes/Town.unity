@@ -19450,7 +19450,7 @@ GameObject:
   - component: {fileID: 467088463}
   - component: {fileID: 467088462}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: NecklaceNPC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24688,6 +24688,9 @@ GameObject:
   - component: {fileID: 1854708631}
   - component: {fileID: 1854708630}
   - component: {fileID: 1854708633}
+  - component: {fileID: 1854708634}
+  - component: {fileID: 1854708635}
+  - component: {fileID: 1854708636}
   m_Layer: 0
   m_Name: NecklaceNPC_Lost
   m_TagString: Untagged
@@ -24799,6 +24802,54 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.1666946}
   m_EdgeRadius: 0
+--- !u!114 &1854708634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854708629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df004dd006442294ca2e7c342d512bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolDistance: 8
+  player: {fileID: 0}
+--- !u!114 &1854708635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854708629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25cc48bf0efe714fa4a3e336b333639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 0.5
+--- !u!50 &1854708636
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854708629}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 20
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1889970304
 GameObject:
   m_ObjectHideFlags: 0
