@@ -5,14 +5,14 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/scene_A.unity
-    guid: 4177b4f8d5a8226419d75ec051583c42
-  - enabled: 1
-    path: Assets/Scenes/scene_B.unity
-    guid: 90d805a8bcae1ac4593610bfc4aeb432
-  - enabled: 1
-    path: Assets/Scenes/town.unity
+    path: Assets/Scenes/Town.unity
     guid: 2b5dcdf5685883b42b111863ca008281
   - enabled: 1
     path: Assets/Scenes/Temporary/plains_piss_pools.unity
@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/plains_dried_river.unity
     guid: e9348492b36b7ec4eb9b7674c62483db
+  - enabled: 1
+    path: Assets/Scenes/main_menu.unity
+    guid: 70ce2a0bb61564043abf08a2e6a5eea3
   m_configObjects: {}
