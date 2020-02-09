@@ -26,8 +26,6 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         interval = Random.Range(3, 8);
         Object cache;
         if (player == null && GlobalVariables.globalObjects.TryGetValue("player", out cache)) player = (GameObject)cache;
-
-        Debug.Log("started " + Time.time);
     }
 
     float t = 0;
@@ -57,7 +55,7 @@ public class BossController : AI, ICharacterComponent, ICharacterController
 
     private void Move()
     {
-        body.position += TargetDirection(player.transform.position) * 1.8f * Time.deltaTime;  //fixed so the movement isn't tied to the script's refresh speed
+        body.position += TargetDirection(player.transform.position) * 1.8f * Time.deltaTime;  //fixed so the movement isn't tied to the script's update speed
     }
 
     bool spinning = false;
@@ -109,15 +107,10 @@ public class BossController : AI, ICharacterComponent, ICharacterController
 
     private void Launch()
     {
-        //launch tentacles until move
         if (!launching)
         {
             StartCoroutine(TentacleBarrage());
             launching = true;
-        }
-        if (t <= 4.05f)                     //The latest time for all the tentacles to return
-        {
-            body.velocity = Vector2.zero;   //Stop motion in order to not mess up tentacle animations
         }
     }
 

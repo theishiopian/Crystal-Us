@@ -16,13 +16,17 @@ public class BossTentacle : MonoBehaviour
     [SerializeField] private float knockback = 6f;  //knockback the player experiences when hit by the tentacle
     private bool returning;                         //whether the tentacle is on the return trip from attacking the destination
     private LineRenderer line;                      //line renderer of the object
+    private Vector2 linePos;                        //the end point of the line renderer (in world space)
     
     void Update()
     {
         //move line renderer
-        Vector2 linePos = line.GetPosition(1) + transform.position;         //get the end point of the line renderer (the end point is in local space)
         float returnSpdMod = 1f;
-        if (returning) { returnSpdMod = 0.5f; }
+        if (returning)                          //if returning
+        {
+            returnSpdMod = 0.5f;                //make return speed half of normal speed
+            destination = transform.position;   //constantly update the return destination with the object world position
+        }
         //move end point of tentacle
         if ((linePos - destination).magnitude <= speed * returnSpdMod * Time.deltaTime)    //check if tentacle is within tolerance of destination
         {
@@ -44,8 +48,8 @@ public class BossTentacle : MonoBehaviour
             linePos += (destination - linePos).normalized * speed * returnSpdMod * Time.deltaTime;  //move tentacle towards destination
         }
         //apply changes to line renderer
-        line.SetPosition(1, linePos - new Vector2(transform.position.x, transform.position.y));     //apply changes to end point in the line renderer
-
+        line.SetPosition(1, linePos - new Vector2(transform.position.x, transform.position.y));     //apply changes to end point in the line renderer (but in local space)
+        
         //damage raycast
         if (!returning)                                                                             //if the tentacle is attacking outward
         {
@@ -93,5 +97,8 @@ public class BossTentacle : MonoBehaviour
         line.SetPosition(0, Vector2.zero);      //set start point to zeros (local space)
         line.SetPosition(1, Vector2.zero);      //set end point to zeros (local space)
         returning = false;                      //by default, the tentacle isn't returning
+
+        //set end point of line renderer to the starting position (in world space)
+        linePos = transform.position;   // (starting position is (0, 0) so it is just the object's world position)
     }
 }
