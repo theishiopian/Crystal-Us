@@ -104,8 +104,22 @@ public class EnemyController : AI, ICharacterComponent, ICharacterController
             }
 
             // Move
-            animator.SetFloat("MovementHorizontal", moveDirection.x);
-            animator.SetFloat("MovementVertical", moveDirection.y);
+            float enemyX = moveDirection.x;
+            float enemyY = moveDirection.y;
+
+            if(Mathf.Abs(enemyX) > 0f && Mathf.Abs(enemyX) <= 1f)
+            {
+                enemyX = 1f * Mathf.Sign(enemyX);
+                animator.SetFloat("MovementHorizontal", enemyX);
+            }
+            else animator.SetFloat("MovementHorizontal", 0f);
+            if (Mathf.Abs(enemyY) > 0f && Mathf.Abs(enemyY) <= 1f)
+            {
+                enemyY = 1f * Mathf.Sign(enemyY);
+                animator.SetFloat("MovementVertical", enemyY);
+            }
+            else animator.SetFloat("MovementVertical", 0f);
+
             controller.Move(moveDirection);
             
 

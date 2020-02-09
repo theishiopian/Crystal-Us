@@ -16,11 +16,18 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
     private CharacterHealthComponent health;
     private CharacterLevelComponent level;
 
+    private bool hasNecklace;
+    private bool hasKey;
+    public GameObject necklace;
+    public GameObject key;
+
     // Start is called before the first frame update
     void Start()
     {
         health = this.gameObject.GetComponent<CharacterHealthComponent>();
         level = this.gameObject.GetComponent<CharacterLevelComponent>();
+        hasNecklace = false;
+        hasKey = false;
     }
 
     // Update is called once per frame
@@ -124,5 +131,17 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
             attackLevel = 0;
             ClearLevels();
         }
+    }
+
+    public void getNecklace()
+    {
+        hasNecklace = true;
+        necklace.SetActive(true);
+    }
+
+    public void getKey()
+    {
+        hasKey = true;
+        key.SetActive(true);
     }
 }
