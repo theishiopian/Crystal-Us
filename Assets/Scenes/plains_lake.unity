@@ -2937,7 +2937,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274891, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274891, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
@@ -3316,12 +3316,12 @@ PrefabInstance:
     - target: {fileID: 6462210559656193235, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.09
+      value: 1.19
       objectReference: {fileID: 0}
     - target: {fileID: 6462210559656193235, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.71
+      value: -7.02
       objectReference: {fileID: 0}
     - target: {fileID: 6462210559656193235, guid: e138bac843d5e764dac9d250f50079ad,
         type: 3}
@@ -25235,7 +25235,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274891, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274891, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
@@ -29774,6 +29774,7 @@ GameObject:
   - component: {fileID: 1877606781}
   - component: {fileID: 1877606780}
   - component: {fileID: 1877606779}
+  - component: {fileID: 1877606782}
   m_Layer: 0
   m_Name: Dungeon Door
   m_TagString: Untagged
@@ -29869,6 +29870,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1877606782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1877606778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af26223e1ee8b554c88b2e08ad2c0d64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1878113785
 GameObject:
   m_ObjectHideFlags: 0
