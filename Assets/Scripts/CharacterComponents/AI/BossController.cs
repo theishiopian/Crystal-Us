@@ -21,6 +21,8 @@ public class BossController : AI, ICharacterComponent, ICharacterController
 
     private BossState currentState = BossState.MOVING;
     private Rigidbody2D body;
+    private Animator animator;
+    public bool facingLeft = true;
 
 
     private void Start()
@@ -30,6 +32,7 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         interval = Random.Range(3, 8);
         Object cache;
         if (player == null && GlobalVariables.globalObjects.TryGetValue("player", out cache)) player = (GameObject)cache;
+        animator = this.gameObject.GetComponent<Animator>();
     }
 
     float t = 0;
@@ -71,12 +74,35 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         }
     }
 
-        private void Move()
+    private void Move()
     {
+        animator.SetBool("IsSpinning", false);
         body.position += TargetDirection(player.transform.position) * 1.8f * Time.deltaTime;  //fixed so the movement isn't tied to the script's update speed
+
+        float enemyX = TargetDirection(player.transform.position).x;
+        float enemyY = TargetDirection(player.transform.position).y;
+
+        if (Mathf.Abs(enemyX) > 0f && Mathf.Abs(enemyX) <= 1f)
+        {
+            enemyX = 1f * Mathf.Sign(enemyX);
+            animator.SetFloat("MovementHorizontal", enemyX);
+            if (enemyX > 0 && !facingLeft)
+                Flip();
+            else if (enemyX < 0 && facingLeft)
+                Flip();
+
+        }
+        else animator.SetFloat("MovementHorizontal", 0f);
+        if (Mathf.Abs(enemyY) > 0f && Mathf.Abs(enemyY) <= 1f)
+        {
+            enemyY = 1f * Mathf.Sign(enemyY);
+            animator.SetFloat("MovementVertical", enemyY);
+        }
+        else animator.SetFloat("MovementVertical", 0f);
     }
 
     bool spinning = false;
+    
 
     private void Spin()
     {
@@ -88,7 +114,14 @@ public class BossController : AI, ICharacterComponent, ICharacterController
 
             body.AddForce(dir, ForceMode2D.Impulse);
 
+            float enemyX = dir.x;
+            if (enemyX > 0 && !facingLeft)
+                Flip();
+            else if (enemyX < 0 && facingLeft)
+                Flip();
+
             spinning = true;
+            animator.SetBool("IsSpinning", true);
         }
     }
 
@@ -117,8 +150,10 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         }
 
         spinning = false;
+
         body.drag = 20f;
         launching = false;
+        animator.SetBool("IsFiring", false);
     }
 
     bool launching = false;
@@ -128,6 +163,7 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         if (!launching)
         {
             StartCoroutine(TentacleBarrage());
+            animator.SetBool("IsFiring", true);
             launching = true;
         }
     }
@@ -151,5 +187,13 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         yield return new WaitForSeconds(0.5f);
         playerInvulnerability = false;
         yield return null;
+    }
+
+    void Flip()
+    {
+        facingLeft = !facingLeft;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
     }
 }
