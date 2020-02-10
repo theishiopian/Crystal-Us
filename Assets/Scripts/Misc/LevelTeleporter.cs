@@ -26,13 +26,12 @@ public class LevelTeleporter : MonoBehaviour
         if (other.gameObject.tag == "Player") // Make sure the collider belongs to the player.
         {
             GlobalVariables.spawnPos = destinationCoordinates;
-            /*PlayerStats.Health = health.health;
+            PlayerStats.Health = health.health;
             PlayerStats.Maxhealth = health.maxHealth;
             PlayerStats.HasKey = hud.hasKey;
-            PlayerStats.HasNecklace = hud.hasNecklace;*/
-
-
+            PlayerStats.HasNecklace = hud.hasNecklace;
             SceneManager.LoadScene(sceneTarget, LoadSceneMode.Single);
+            //Debug.Log(PlayerStats.Health);
         }
     }
 }

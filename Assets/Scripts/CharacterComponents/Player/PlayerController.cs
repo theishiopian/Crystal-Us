@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     void Start()
     {
         this.transform.position = GlobalVariables.spawnPos;
+
         GlobalVariables.globalObjects["player"] = this.gameObject;
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
         meleeAttack = this.gameObject.GetComponent<CharacterMeleeComponent>();
@@ -52,6 +53,11 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         animator.SetFloat("AnimSpeed", 1.0f);
         rangedAttack = GetComponent<CharacterRangedComponent>();
         health = GetComponent<CharacterHealthComponent>();
+
+        health.health = PlayerStats.Health;
+        health.maxHealth = PlayerStats.Maxhealth;
+        hud.hasKey = PlayerStats.HasKey;
+        hud.hasNecklace = PlayerStats.HasNecklace;
     }
 
     //will move to reference class if neccesary
