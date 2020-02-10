@@ -18,6 +18,7 @@ public class BossTentacle : MonoBehaviour
     private GameObject tentacleEnd = null;          //end image of tentacle
     private SpriteRenderer tentacleTile = null;     //tentacle tile sprite renderer
     private Vector2 tentaclePos;                    //tentacle end point position
+    private float rootFlip;                         //the x scale of the root when activated
     
     void Update()
     {
@@ -52,7 +53,7 @@ public class BossTentacle : MonoBehaviour
 
         //THE FOLLOWING CODE WORKS BUT I HAVE NO FUCKING IDEA HOW, A RESULT OF PAINFUL TRIAL AND ERROR
         Quaternion tentacleRot = Quaternion.LookRotation((new Vector3(tentaclePos.x, tentaclePos.y, 0f) - transform.position).normalized, Vector3.forward);
-        transform.rotation = Quaternion.Euler(0f, 0f, tentacleRot.eulerAngles.x * transform.root.localScale.x + 90f * transform.root.localScale.x);
+        transform.rotation = Quaternion.Euler(0f, 0f, (tentacleRot.eulerAngles.x + 90f) * rootFlip);
         //DO NOT TOUCH THE TWO LINES ABOVE, IT IS BLACK MAGIC
 
         tentacleEnd.transform.position = tentaclePos;                                               //apply changes to end point of the tentacle
@@ -104,5 +105,6 @@ public class BossTentacle : MonoBehaviour
         tentaclePos = transform.position;
         tentacleEnd = transform.Find("Tentacle End").gameObject;
         tentacleTile = GetComponent<SpriteRenderer>();
+        rootFlip = transform.root.localScale.x;
     }
 }
