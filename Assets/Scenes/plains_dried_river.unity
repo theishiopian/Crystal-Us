@@ -14908,6 +14908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc39e6d381b2a741a7e0b810f809ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  boss: {fileID: 7609459744798286112, guid: 6b08d0938d307ca44b3450d88c69175d, type: 3}
+  bossPosition: {x: 0, y: 0, z: 0}
 --- !u!61 &1193695000
 BoxCollider2D:
   m_ObjectHideFlags: 0

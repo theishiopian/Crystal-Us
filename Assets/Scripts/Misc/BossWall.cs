@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class BossWall : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject boss = null;
+    public Vector3 bossPosition = Vector3.zero;
+    private bool triggered = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerController player = other.GetComponent<PlayerController>();
-        if (player == null)
-            return;
-        transform.GetChild(0).gameObject.SetActive(true);
+        if (!triggered)
+        {
+            PlayerController player = other.GetComponent<PlayerController>();
+            if (player == null)
+                return;
+            transform.GetChild(0).gameObject.SetActive(true);
+            Instantiate(boss);
+            boss.transform.position = bossPosition;
+            triggered = true;
+        }
     }
 }
