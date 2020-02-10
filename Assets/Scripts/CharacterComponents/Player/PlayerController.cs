@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     private Animator animator;
     private CharacterRangedComponent rangedAttack;
     private CharacterHealthComponent health;
+    private CharacterLevelComponent level;
 
     void Awake()
     {
@@ -41,15 +42,27 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     void Start()
     {
         this.transform.position = GlobalVariables.spawnPos;
+
         GlobalVariables.globalObjects["player"] = this.gameObject;
         controller = this.gameObject.GetComponent<CharacterMoverComponent>();
         meleeAttack = this.gameObject.GetComponent<CharacterMeleeComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
         vfx = this.gameObject.GetComponent<PlayerVFXComponent>();
+        level = this.gameObject.GetComponent<CharacterLevelComponent>();
         animator = this.gameObject.GetComponent<Animator>();
         animator.SetFloat("AnimSpeed", 1.0f);
         rangedAttack = GetComponent<CharacterRangedComponent>();
         health = GetComponent<CharacterHealthComponent>();
+
+        health.health = PlayerStats.Health;
+        health.maxHealth = PlayerStats.Maxhealth;
+        hud.hasKey = PlayerStats.HasKey;
+        hud.hasNecklace = PlayerStats.HasNecklace;
+        level.XP = PlayerStats.Xp;
+        level.level = PlayerStats.Level;
+        level.levelUp = PlayerStats.Levelup;
+
+        hud.hasSword = PlayerStats.HasSword;
     }
 
     //will move to reference class if neccesary

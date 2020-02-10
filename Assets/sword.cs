@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossWall : MonoBehaviour
+public class sword : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -18,9 +18,10 @@ public class BossWall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        PlayerController player = other.GetComponent<PlayerController>();
-        if (player == null)
+        PlayerHUDComponent HUD = other.GetComponent<PlayerHUDComponent>();
+        if (HUD == null)
             return;
-        transform.GetChild(0).gameObject.SetActive(true);
+        HUD.getSword();
+        Destroy(gameObject);
     }
 }

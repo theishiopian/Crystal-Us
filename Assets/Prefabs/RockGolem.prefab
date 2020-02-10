@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59311bf8e2fbe0546bf6794758b89bb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
+  maxHealth: 35
+  health: 35
   armor: 0
 --- !u!114 &3384834509132012769
 MonoBehaviour:
@@ -116,6 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   XP: 0
+  levelUp: 30
 --- !u!114 &3384834509132012770
 MonoBehaviour:
   m_ObjectHideFlags: 0

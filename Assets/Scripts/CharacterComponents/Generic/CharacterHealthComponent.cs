@@ -18,6 +18,12 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
         health = maxHealth;
         isPlayer = (this.gameObject.tag.Equals("Player"));
         anim = this.gameObject.GetComponent<Animator>();
+
+    }
+
+    void Awake()
+    {
+
     }
 
     public void Damage(int amount)
@@ -35,6 +41,7 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
         if (health > 0 && isPlayer)
         {
             anim.SetBool("IsDamaged", true);
+            //PlayerStats.Health = health;
         }
         else if(health <= 0)
         {
@@ -44,7 +51,6 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
             }
             else
             {
-                //GlobalVariables.globalObjects.Add("last_enemy", this.gameObject);
                 GlobalVariables.globalObjects["last_enemy"] = this.gameObject;
                 EventManager.TriggerEvent("enemy_death");
                 Die();
@@ -58,7 +64,6 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
 
     void Die()
     {
-        //Debug.Log("dead");
         Destroy(this.gameObject, 0.1f);//todo: death effects? object pool?
     }
 }
