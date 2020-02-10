@@ -23,6 +23,7 @@ public class BossController : AI, ICharacterComponent, ICharacterController
     private Rigidbody2D body;
     private Animator animator;
     public bool facingLeft = true;
+    private float spinDuration = .05f;
 
 
     private void Start()
@@ -86,9 +87,9 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         {
             enemyX = 1f * Mathf.Sign(enemyX);
             animator.SetFloat("MovementHorizontal", enemyX);
-            if (enemyX > 0 && !facingLeft)
+            if (enemyX < 0 && !facingLeft)
                 Flip();
-            else if (enemyX < 0 && facingLeft)
+            else if (enemyX > 0 && facingLeft)
                 Flip();
 
         }
@@ -108,20 +109,23 @@ public class BossController : AI, ICharacterComponent, ICharacterController
     {
         if(!spinning)
         {
+            
             body.drag = 0f;
 
             Vector2 dir = Quaternion.Euler(0,0, 45 + Random.Range(0,4) * 90) * Vector2.up * 10; //45 degree angles
 
             body.AddForce(dir, ForceMode2D.Impulse);
 
-            float enemyX = dir.x;
-            if (enemyX > 0 && !facingLeft)
-                Flip();
-            else if (enemyX < 0 && facingLeft)
-                Flip();
+
 
             spinning = true;
             animator.SetBool("IsSpinning", true);
+        }
+        spinDuration -= Time.deltaTime;
+        if (spinDuration < 0f)
+        {
+            Flip();
+            spinDuration = .05f;
         }
     }
 
@@ -192,7 +196,7 @@ public class BossController : AI, ICharacterComponent, ICharacterController
     void Flip()
     {
         facingLeft = !facingLeft;
-        Vector3 theScale = transform.localScale;
+        Vector2 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
     }
