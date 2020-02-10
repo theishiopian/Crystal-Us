@@ -62,11 +62,10 @@ public class BossController : AI, ICharacterComponent, ICharacterController
     {
         if (hit.gameObject == player && !playerInvulnerability)
         {
-            Debug.Log("Collide Distance: " + (transform.position - player.transform.position).magnitude);
             player.GetComponent<CharacterHealthComponent>().Damage(touchDamage);
             if (player.GetComponent<Rigidbody2D>() != null && touchKnockback > 0)
             {
-                player.GetComponent<Rigidbody2D>().AddForce((transform.position - player.transform.position).normalized * touchKnockback, ForceMode2D.Impulse);
+                player.GetComponent<Rigidbody2D>().AddForce((player.transform.position - transform.position).normalized * touchKnockback, ForceMode2D.Impulse);
             }
             StartCoroutine(PlayerInvulnerable());
         }

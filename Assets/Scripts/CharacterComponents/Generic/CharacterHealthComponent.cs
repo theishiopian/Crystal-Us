@@ -50,7 +50,10 @@ public class CharacterHealthComponent : MonoBehaviour, ICharacterComponent
                 Die();
             }
         }
-        anim.SetBool("IsDamaged", false);
+        if (anim != null)
+        {
+            anim.SetBool("IsDamaged", false);
+        }
     }
 
     void Die()
