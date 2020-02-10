@@ -1434,6 +1434,8 @@ MonoBehaviour:
   - {fileID: 1779206542}
   - {fileID: 1675383774}
   player: {fileID: 806361647}
+  touchDamage: 2
+  touchKnockback: 35
 --- !u!50 &1866167821
 Rigidbody2D:
   serializedVersion: 4

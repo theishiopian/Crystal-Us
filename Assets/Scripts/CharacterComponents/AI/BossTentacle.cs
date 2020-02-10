@@ -61,7 +61,7 @@ public class BossTentacle : MonoBehaviour
                 Rigidbody2D body = null;
                 try
                 {
-                    health = hit.collider.gameObject.GetComponent<CharacterHealthComponent>();      //the player's collider
+                    health = hit.collider.gameObject.GetComponent<CharacterHealthComponent>();      //the player's health from the collider
                 }
                 catch { /*nothing*/ }
                 if (hit && health != null)
@@ -72,8 +72,8 @@ public class BossTentacle : MonoBehaviour
                     {
                         body.AddForce((destination - linePos).normalized * knockback, ForceMode2D.Impulse);
                     }
-                // --                                             --
                 }
+                // --                                             --
 
                 //return tentacle
                 destination = transform.position;                                       //set new destination to the start point
