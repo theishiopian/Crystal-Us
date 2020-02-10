@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
     private Animator animator;
     private CharacterRangedComponent rangedAttack;
     private CharacterHealthComponent health;
+    private CharacterLevelComponent level;
 
     void Awake()
     {
@@ -46,6 +47,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         meleeAttack = this.gameObject.GetComponent<CharacterMeleeComponent>();
         hud = this.gameObject.GetComponent<PlayerHUDComponent>();
         vfx = this.gameObject.GetComponent<PlayerVFXComponent>();
+        level = this.gameObject.GetComponent<CharacterLevelComponent>();
         animator = this.gameObject.GetComponent<Animator>();
         animator.SetFloat("AnimSpeed", 1.0f);
         rangedAttack = GetComponent<CharacterRangedComponent>();

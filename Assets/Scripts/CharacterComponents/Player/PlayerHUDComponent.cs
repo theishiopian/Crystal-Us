@@ -30,6 +30,12 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
         hasKey = false;
     }
 
+    void Awake()
+    {
+        /*hasKey = PlayerStats.HasKey;
+        hasNecklace = PlayerStats.HasNecklace;*/
+    }
+
     // Update is called once per frame
     void Update()
     {
