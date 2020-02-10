@@ -3612,7 +3612,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: destinationCoordinates.y
-      value: 26
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274889, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}

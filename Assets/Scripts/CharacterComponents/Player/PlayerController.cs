@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterController
 {
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         Attack();
         Dialouge();
         //Debug.Log(attackPower);
+        DebugSceneHotkeys();
     }
 
     void Move()
@@ -206,6 +208,32 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
             {
                 npc.PrintDialouge();
             }
+        }
+    }
+
+    void DebugSceneHotkeys()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha8))
+        {
+            GlobalVariables.spawnPos = new Vector3(0f, -3f, 0f);
+            SceneManager.LoadScene("dungeon_sword_upgrade", LoadSceneMode.Single);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            GlobalVariables.spawnPos = new Vector3(-2.5f, -33f, 0f);
+            SceneManager.LoadScene("plains_dried_river", LoadSceneMode.Single);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            SceneManager.LoadScene("main_menu", LoadSceneMode.Single);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            SceneManager.LoadScene("game_over", LoadSceneMode.Single);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene("victory_screen", LoadSceneMode.Single);
         }
     }
 

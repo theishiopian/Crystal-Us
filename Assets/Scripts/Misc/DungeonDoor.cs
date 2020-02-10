@@ -20,7 +20,7 @@ public class DungeonDoor : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         HUD = other.collider.GetComponent<PlayerHUDComponent>();
-        if (HUD.hasKey)
+        if (HUD != null && HUD.hasKey)
         {
             Destroy(gameObject);
         }
