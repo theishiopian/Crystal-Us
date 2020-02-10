@@ -24526,7 +24526,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274889, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: m_Name
-      value: LevelTeleporter-Plains1
+      value: LevelTeleporter-plains_water
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274891, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}

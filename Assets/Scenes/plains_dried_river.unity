@@ -168,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: sceneTarget
-      value: Plains1
+      value: plains_water
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
@@ -183,7 +183,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274889, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: m_Name
-      value: LevelTeleporter-Plains1
+      value: LevelTeleporter-plains_water
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274891, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
@@ -3038,36 +3038,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &722672813
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 722672814}
-  m_Layer: 0
-  m_Name: to plains1
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &722672814
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722672813}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.26, y: -14, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &862431084
 GameObject:
   m_ObjectHideFlags: 0
@@ -14236,7 +14206,7 @@ PrefabInstance:
     - target: {fileID: 868266525701546227, guid: 3b39eee3a6490b644b17c3dd64d457bb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 868266525701546227, guid: 3b39eee3a6490b644b17c3dd64d457bb,
         type: 3}
@@ -17562,36 +17532,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1774363444
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1774363445}
-  m_Layer: 0
-  m_Name: to dungeon 1 gate
-  m_TagString: Untagged
-  m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1774363445
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774363444}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.48, y: -34.09, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1823161658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17746,7 +17686,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: sceneTarget
-      value: dungeon1
+      value: dungeon_necklace
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274888, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
@@ -17761,7 +17701,7 @@ PrefabInstance:
     - target: {fileID: 9114706885179274889, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
       propertyPath: m_Name
-      value: LevelTeleporter-Dungeon1
+      value: LevelTeleporter-dungeon_necklace
       objectReference: {fileID: 0}
     - target: {fileID: 9114706885179274891, guid: 4412ccc1fc684b34799bf98be0648e70,
         type: 3}
@@ -17880,7 +17820,7 @@ PrefabInstance:
     - target: {fileID: 8320255495810129698, guid: 104ce84b4e319b443bc6be99bc684836,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8320255495810129698, guid: 104ce84b4e319b443bc6be99bc684836,
         type: 3}
