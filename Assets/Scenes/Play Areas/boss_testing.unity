@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 381654183}
   - component: {fileID: 381654184}
   - component: {fileID: 381654185}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tentacle 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -479,7 +479,7 @@ GameObject:
   - component: {fileID: 519490238}
   - component: {fileID: 519490239}
   - component: {fileID: 519490240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tentacle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -622,7 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 640105372}
   - component: {fileID: 640105373}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1075,7 +1075,7 @@ GameObject:
   - component: {fileID: 1675383775}
   - component: {fileID: 1675383776}
   - component: {fileID: 1675383777}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tentacle 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1219,7 +1219,7 @@ GameObject:
   - component: {fileID: 1779206543}
   - component: {fileID: 1779206544}
   - component: {fileID: 1779206545}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Tentacle 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1364,13 +1364,29 @@ GameObject:
   - component: {fileID: 1866167819}
   - component: {fileID: 1866167820}
   - component: {fileID: 1866167821}
-  m_Layer: 0
+  - component: {fileID: 1866167817}
+  m_Layer: 10
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1866167817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866167816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59311bf8e2fbe0546bf6794758b89bb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 120
+  health: 120
+  armor: 0
 --- !u!4 &1866167818
 Transform:
   m_ObjectHideFlags: 0
@@ -1435,7 +1451,7 @@ MonoBehaviour:
   - {fileID: 1675383774}
   player: {fileID: 806361647}
   touchDamage: 2
-  touchKnockback: 35
+  touchKnockback: 25
 --- !u!50 &1866167821
 Rigidbody2D:
   serializedVersion: 4
