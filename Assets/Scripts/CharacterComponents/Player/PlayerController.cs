@@ -58,6 +58,11 @@ public class PlayerController : MonoBehaviour, ICharacterComponent, ICharacterCo
         health.maxHealth = PlayerStats.Maxhealth;
         hud.hasKey = PlayerStats.HasKey;
         hud.hasNecklace = PlayerStats.HasNecklace;
+        level.XP = PlayerStats.Xp;
+        level.level = PlayerStats.Level;
+        level.levelUp = PlayerStats.Levelup;
+
+        hud.hasSword = PlayerStats.HasSword;
     }
 
     //will move to reference class if neccesary

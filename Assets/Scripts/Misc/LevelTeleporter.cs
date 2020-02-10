@@ -11,6 +11,7 @@ public class LevelTeleporter : MonoBehaviour
 
     private PlayerHUDComponent hud;
     private CharacterHealthComponent health;
+    private CharacterLevelComponent level;
     private GameObject player;
 
     private void Start()
@@ -18,6 +19,7 @@ public class LevelTeleporter : MonoBehaviour
         player = GameObject.Find("Player");
         hud = player.GetComponent<PlayerHUDComponent>();
         health = player.GetComponent<CharacterHealthComponent>();
+        level = player.GetComponent<CharacterLevelComponent>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -30,6 +32,13 @@ public class LevelTeleporter : MonoBehaviour
             PlayerStats.Maxhealth = health.maxHealth;
             PlayerStats.HasKey = hud.hasKey;
             PlayerStats.HasNecklace = hud.hasNecklace;
+            
+            PlayerStats.Xp = level.XP;
+            PlayerStats.Level = level.level;
+            PlayerStats.Levelup = level.levelUp;
+
+            PlayerStats.HasSword = hud.hasSword;
+
             SceneManager.LoadScene(sceneTarget, LoadSceneMode.Single);
             //Debug.Log(PlayerStats.Health);
         }
