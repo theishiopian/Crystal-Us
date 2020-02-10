@@ -15,6 +15,10 @@ public class BossController : AI, ICharacterComponent, ICharacterController
 
     public GameObject player;
 
+    [SerializeField] private int touchDamage;
+    [SerializeField] private float touchKnockback;
+    private bool playerInvulnerability = false;
+
     private BossState currentState = BossState.MOVING;
     private Rigidbody2D body;
 
@@ -53,7 +57,21 @@ public class BossController : AI, ICharacterComponent, ICharacterController
         }
     }
 
-    private void Move()
+    //Gabe's damage on collision code
+    private void OnCollisionEnter2D(Collision2D hit)
+    {
+        if (hit.gameObject == player && !playerInvulnerability)
+        {
+            player.GetComponent<CharacterHealthComponent>().Damage(touchDamage);
+            if (player.GetComponent<Rigidbody2D>() != null && touchKnockback > 0)
+            {
+                player.GetComponent<Rigidbody2D>().AddForce((player.transform.position - transform.position).normalized * touchKnockback, ForceMode2D.Impulse);
+            }
+            StartCoroutine(PlayerInvulnerable());
+        }
+    }
+
+        private void Move()
     {
         body.position += TargetDirection(player.transform.position) * 1.8f * Time.deltaTime;  //fixed so the movement isn't tied to the script's update speed
     }
@@ -113,7 +131,7 @@ public class BossController : AI, ICharacterComponent, ICharacterController
             launching = true;
         }
     }
-
+    
     IEnumerator TentacleBarrage()
     {
         for(int i = 0; i != 4; i++)
@@ -124,6 +142,14 @@ public class BossController : AI, ICharacterComponent, ICharacterController
             yield return new WaitForSeconds(0.6f);
         }
 
+        yield return null;
+    }
+
+    IEnumerator PlayerInvulnerable()
+    {
+        playerInvulnerability = true;
+        yield return new WaitForSeconds(0.5f);
+        playerInvulnerability = false;
         yield return null;
     }
 }
