@@ -18,8 +18,10 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
 
     public bool hasNecklace;
     public bool hasKey;
+    public bool hasSword;
     public GameObject necklace;
     public GameObject key;
+    public GameObject sword;
 
     // Start is called before the first frame update
     void Start()
@@ -151,5 +153,10 @@ public class PlayerHUDComponent : MonoBehaviour, ICharacterComponent
         necklace.SetActive(false);
         hasKey = true;
         key.SetActive(true);
+    }
+
+    public void getSword()
+    {
+        hasSword = true;
     }
 }
