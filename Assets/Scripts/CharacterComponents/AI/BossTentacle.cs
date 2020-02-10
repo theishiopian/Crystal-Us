@@ -52,7 +52,7 @@ public class BossTentacle : MonoBehaviour
 
         //THE FOLLOWING CODE WORKS BUT I HAVE NO FUCKING IDEA HOW, A RESULT OF PAINFUL TRIAL AND ERROR
         Quaternion tentacleRot = Quaternion.LookRotation((new Vector3(tentaclePos.x, tentaclePos.y, 0f) - transform.position).normalized, Vector3.forward);
-        transform.rotation = Quaternion.Euler(0f, 0f, -90f - tentacleRot.eulerAngles.x);
+        transform.rotation = Quaternion.Euler(0f, 0f, tentacleRot.eulerAngles.x * transform.root.localScale.x + 90f * transform.root.localScale.x);
         //DO NOT TOUCH THE TWO LINES ABOVE, IT IS BLACK MAGIC
 
         tentacleEnd.transform.position = tentaclePos;                                               //apply changes to end point of the tentacle
